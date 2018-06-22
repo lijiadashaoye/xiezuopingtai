@@ -19,4 +19,6 @@ export const loadSvgResources = (ir: MdIconRegistry, ds: DomSanitizer) => {
     ir.addSvgIcon('delete', ds.bypassSecurityTrustResourceUrl(`${imgDir}/icons/delete.svg`));
     ir.addSvgIcon('hand', ds.bypassSecurityTrustResourceUrl(`${imgDir}/icons/hand-grab-o.svg`));
     ir.addSvgIcon('move', ds.bypassSecurityTrustResourceUrl(`${imgDir}/icons/move.svg`));
+
+    ir.addSvgIcon('unassigned', ds.bypassSecurityTrustResourceUrl(`${imgDir}/avatar/unassigned.svg`));
 }

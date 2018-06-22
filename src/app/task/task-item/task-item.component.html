@@ -1,3 +1,14 @@
-<p>
-  task-item works!
-</p>
+<md-list-item>
+  <md-checkbox style="order: -1;margin-right:5px;"></md-checkbox>
+  <div md-line class="content">
+    {{item.desc}}
+  </div>
+  <div md-line class="bottom-bar">
+    <span class="due-date" *ngIf="item.dueDate">
+      {{item.dueDate|date:'yyyy-mm-dd'}}
+    </span>
+    <md-icon *ngIf="item.reminder">alarm</md-icon>
+  </div>
+
+  <md-icon [svgIcon]="icons" md-list-avatar class="iconsd"></md-icon>
+</md-list-item>
