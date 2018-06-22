@@ -1,0 +1,15 @@
+:host{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.card{
+    flex: 0 0 350px;
+    margin:10px;
+}
+.fab-button{
+    position: fixed;
+    right:30px;
+    bottom:80px;
+    z-index: 1000;
+}

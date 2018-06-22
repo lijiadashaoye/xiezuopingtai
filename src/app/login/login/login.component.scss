@@ -1,0 +1,20 @@
+md-card {
+  height: 23em;
+  flex:0 0 20em;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  height:100%;
+
+}
+.text-right{
+    margin:5px;
+    text-align: right;
+}
+.text-right p{
+    margin:5px;
+}
