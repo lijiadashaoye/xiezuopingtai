@@ -13,4 +13,10 @@ export const loadSvgResources = (ir: MdIconRegistry, ds: DomSanitizer) => {
     ir.addSvgIcon('projects', ds.bypassSecurityTrustResourceUrl(`${sidebarDir}/projects.svg`));
     // 调用svg集合
     ir.addSvgIconSetInNamespace('avatar', ds.bypassSecurityTrustResourceUrl(`${imgDir}/avatar/avatars.svg`));
+
+    ir.addSvgIcon('add', ds.bypassSecurityTrustResourceUrl(`${imgDir}/icons/add.svg`));
+    ir.addSvgIcon('burgerNav', ds.bypassSecurityTrustResourceUrl(`${imgDir}/icons/burger-navigation.svg`));
+    ir.addSvgIcon('delete', ds.bypassSecurityTrustResourceUrl(`${imgDir}/icons/delete.svg`));
+    ir.addSvgIcon('hand', ds.bypassSecurityTrustResourceUrl(`${imgDir}/icons/hand-grab-o.svg`));
+    ir.addSvgIcon('move', ds.bypassSecurityTrustResourceUrl(`${imgDir}/icons/move.svg`));
 }

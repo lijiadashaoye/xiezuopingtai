@@ -1,9 +1,9 @@
-<div md-subheader>
+<div md-subheader class="header-container">
   <div>
     <h3>{{header}}</h3>
   </div>
 
-  <div>
+  <div class="fill">
     <button>
       <md-icon>add_circle-outline</md-icon>
       <span>新任务</span>
@@ -11,6 +11,24 @@
   </div>
 
   <div>
-
+    <button md-icon-button [mdMenuTriggerFor]="menu">
+      <md-icon>keyboard_arrow_down</md-icon>
+    </button>
   </div>
 </div>
+<md-menu #menu="mdMenu">
+  <button md-menu-item>
+    <md-icon>mode_edit</md-icon>
+    <span>修改列表名称</span>
+  </button>
+
+  <button md-menu-item>
+    <md-icon [svgIcon]="'move'"></md-icon>
+    <span>移动本列表所有内容</span>
+  </button>
+
+  <button md-menu-item>
+    <md-icon>delete_forever</md-icon>
+    <span>删除列表</span>
+  </button>
+</md-menu>

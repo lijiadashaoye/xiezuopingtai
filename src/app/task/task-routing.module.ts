@@ -1,22 +1,18 @@
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import { TaskHomeComponent } from './task-home/task-home.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskHeaderComponent } from './task-header/task-header.component';
 import { TaskItemComponent } from './task-item/task-item.component';
-import { TaskRoutingModule } from './task-routing.module';
-import { SharedModule } from '../shared/shared.module';
+
+const routes: Routes = [
+    { path: '', component: TaskHomeComponent }
+];
 
 @NgModule({
-  imports: [
-    SharedModule,
-    TaskRoutingModule,
-  ],
-  declarations: [
-    TaskHomeComponent,
-    TaskListComponent,
-    TaskHeaderComponent,
-    TaskItemComponent
-  ]
+    imports: [CommonModule, RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
-export class TaskModule { }
+export class TaskRoutingModule {}
