@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-task-header',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-header.component.scss']
 })
 export class TaskHeaderComponent implements OnInit {
-
+  @Input() header = ''
   constructor() { }
 
   ngOnInit() {
