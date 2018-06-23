@@ -4,7 +4,7 @@
   </div>
 
   <div class="fill">
-    <button md-icon-button>
+    <button md-icon-button (click)="onNewTask()">
       <md-icon>add_circle_outline</md-icon> 
       <span>新任务</span>
     </button>
@@ -23,12 +23,12 @@
     <span>修改列表名称</span>
   </button>
 
-  <button md-menu-item>
+  <button md-menu-item (click)="onMoveAllClick()">
     <md-icon [svgIcon]="'move'"style="line-height:1;"></md-icon>
     <span>移动本列表所有内容</span>
   </button>
 
-  <button md-menu-item>
+  <button md-menu-item (click)="onDeleteClick()">
     <md-icon>delete_forever</md-icon>
     <span>删除列表</span>
   </button>

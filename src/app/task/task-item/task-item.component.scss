@@ -1,6 +1,9 @@
+
 .due-date {
   background: rgb(241, 47, 47);
   color: white;
+  padding:1px 3px;
+  font-size:10px;
 }
 
 .iconsd {
@@ -10,4 +13,19 @@
   border-radius: 50%;
   overflow: hidden;
   order:10;
+}
+md-icon{
+  vertical-align: middle;
+}
+.selected{
+  color:rgba(144, 147, 150, 0.8);;
+}
+.one{
+  border-left:3px solid rgb(0, 140, 255);
+}
+.two{
+  border-left:3px solid rgb(255, 102, 0);
+}
+.three{
+  border-left:3px solid rgb(255, 60, 0);
 }

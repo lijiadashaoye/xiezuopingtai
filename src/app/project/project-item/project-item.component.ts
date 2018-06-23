@@ -1,4 +1,10 @@
-import { Component, OnInit, Output, Input,EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  Input,
+  EventEmitter
+} from '@angular/core';
 
 @Component({
   selector: 'app-project-item',
@@ -7,12 +13,23 @@ import { Component, OnInit, Output, Input,EventEmitter } from '@angular/core';
 })
 export class ProjectItemComponent implements OnInit {
   @Input() item;
-  @Output() inviteOutput=new EventEmitter()
-  constructor() { }
+  @Output() inviteOutput = new EventEmitter();
+  @Output() editClick = new EventEmitter();
+  @Output() toDelete = new EventEmitter()
+  constructor() {}
 
-  ngOnInit() {
-  }
-  toInvite() {
-    this.inviteOutput.emit()
+  ngOnInit() {}
+  toDo(which) {
+    switch (which) {
+      case 'edit':
+        this.inviteOutput.emit();
+        break;
+      case 'invite':
+        this.editClick.emit();
+        break;
+      case 'delete':
+        this.toDelete.emit();
+        break;
+    }
   }
 }

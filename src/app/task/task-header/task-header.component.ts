@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-task-header',
@@ -6,10 +6,21 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./task-header.component.scss']
 })
 export class TaskHeaderComponent implements OnInit {
-  @Input() header = ''
+  @Input() header = '';
+  @Output() newTask=new EventEmitter();
+  @Output() moveAll=new EventEmitter();
+  @Output() headerDelete=new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
-
+  onNewTask(){
+    this.newTask.emit()
+  }
+  onMoveAllClick(){
+    this.moveAll.emit(this.header)
+  }
+  onDeleteClick(){
+    this.headerDelete.emit()
+  }
 }

@@ -1,9 +1,15 @@
-<md-list-item>
-  <md-checkbox style="order: -1;margin-right:5px;"></md-checkbox>
-  <div md-line class="content">
-    {{item.desc}}
+<md-list-item [ngClass]="{
+  'one':item.priority==3,
+  'two':item.priority==2,
+  'three':item.priority==1
+  }" (click)="onItemClick()">
+  <md-checkbox style="order: -1;margin-right:5px;"
+  [checked]="item.completed" 
+  (click)="checkboxClick($event,item)"></md-checkbox>
+  <div md-line [ngClass]="{'selected':item.completed}">
+    <span [md-tooltip]="item.desc">{{item.desc}}</span>
   </div>
-  <div md-line class="bottom-bar">
+  <div md-line>
     <span class="due-date" *ngIf="item.dueDate">
       {{item.dueDate|date:'yyyy-mm-dd'}}
     </span>

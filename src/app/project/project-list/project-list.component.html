@@ -1,5 +1,7 @@
-<app-project-item *ngFor="let project of projects"
-(inviteOutput)="toInvite()" [item]="project" class="card">
+<app-project-item *ngFor="let project of projects" 
+(inviteOutput)="toInvite()" 
+(toDelete)="toDelete()" 
+[item]="project" class="card" (editClick)="editClick()">
 </app-project-item>
 
 <button md-fab type="button" (click)="openNewProjectDialog()" class="fab-button">

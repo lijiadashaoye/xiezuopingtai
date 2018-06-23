@@ -1,5 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {
+  NgModule
+} from '@angular/core';
+import {
+  CommonModule
+} from '@angular/common';
 import {
   MdToolbarModule,
   MdIconModule,
@@ -13,9 +17,13 @@ import {
   MdAutocompleteModule,
   MdMenuModule,
   MdCheckboxModule,
-  
+  MdTooltipModule,
+  MdRadioModule,
+  MdDatepickerModule,
+  MdNativeDateModule,
+  MdSelectModule,
 } from '@angular/material';
-
+import {ConfimDialogComponent} from './confim-dialog/confim-dialog.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -31,6 +39,11 @@ import {
     MdAutocompleteModule,
     MdMenuModule,
     MdCheckboxModule,
+    MdTooltipModule,
+    MdRadioModule,
+    MdDatepickerModule,
+    MdNativeDateModule,
+    MdSelectModule,
   ],
   exports: [
     CommonModule,
@@ -45,7 +58,17 @@ import {
     MdAutocompleteModule,
     MdMenuModule,
     MdCheckboxModule,
+    MdTooltipModule,
+    MdRadioModule,
+    MdDatepickerModule,
+    MdNativeDateModule,
+    MdSelectModule,
   ],
-  declarations: []
+  declarations: [
+    ConfimDialogComponent
+  ],
+  entryComponents:[
+    ConfimDialogComponent
+  ]
 })
-export class SharedModule { }
+export class SharedModule {}

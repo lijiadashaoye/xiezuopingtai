@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('taskmgr App', () => {
+describe('app2 App', () => {
   let page: AppPage;
 
   beforeEach(() => {

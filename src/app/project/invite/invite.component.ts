@@ -26,11 +26,9 @@ export class InviteComponent implements OnInit {
     private dialogref: MdDialogRef<InviteComponent>
   ) { }
 
-  ngOnInit() {
-    console.log(this.dialogdata);
-  }
-  save() {
-    this.dialogref.close({ reData: 'asdfasdf' })
+  ngOnInit() {}
+  save(which) {
+    which?this.dialogref.close({ reData: 'invite' }):this.dialogref.close()
   }
   displayUser(user: { id: string; name: string }) {
     return user?user.name:''
