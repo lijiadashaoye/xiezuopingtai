@@ -14,6 +14,9 @@ import {
 import {
   ConfimDialogComponent
 } from '../../shared/confim-dialog/confim-dialog.component';
+import {
+  NewTaskListComponent
+} from '../new-task-list/new-task-list.component';
 @Component({
   selector: 'app-task-home',
   templateUrl: './task-home.component.html',
@@ -57,7 +60,7 @@ export class TaskHomeComponent implements OnInit {
           desc: '任务一：拉屎',
           completed: false,
           reminder: true,
-          priority: 3,
+          priority: 2,
           owner: {
             id: 1,
             name: '张三',
@@ -154,8 +157,25 @@ export class TaskHomeComponent implements OnInit {
       console.log(result)
     })
   }
-
   newTaskList() {
-
+    let openDialog = this.dialog.open(NewTaskListComponent, {
+      data: {
+        title: '新建列表'
+      }
+    });
+    openDialog.afterClosed().subscribe(result => {
+      console.log(result)
+    })
+  }
+  changeListNames(list) {
+    let openDialog = this.dialog.open(NewTaskListComponent, {
+      data: {
+        title: '修改列表名称'
+      }
+    });
+    openDialog.afterClosed().subscribe(result => {
+      result ? list.name = result : null
+      console.log(result)
+    })
   }
 }

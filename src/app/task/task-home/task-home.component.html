@@ -4,7 +4,7 @@
      (newTask)="onNewTask()"
      (moveAll)="onMoveAll($event)"
      (headerDelete)="headerDelete()"
-     
+     (changeListName)="changeListNames(list)"
      ></app-task-header>
     <app-task-item class="list-container" 
     *ngFor="let task of list.tasks" 

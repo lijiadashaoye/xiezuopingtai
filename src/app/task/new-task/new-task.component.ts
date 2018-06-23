@@ -25,22 +25,19 @@ export class NewTaskComponent implements OnInit {
     value: 3
   }];
   dialogDatas;
-  title='';
+  title = '';
   constructor(
     @Inject(MD_DIALOG_DATA) private dialogdata,
     private dialogref: MdDialogRef < NewTaskComponent >
   ) {}
 
   ngOnInit() {
-    this.dialogDatas=this.dialogdata;
-    this.title=this.dialogDatas.title;
+    this.dialogDatas = this.dialogdata;
+    this.title = this.dialogDatas.title;
   }
-  save() {
-    this.dialogref.close({
-      reData: 'new task save'
-    })
-  }
-  close(){
-    this.dialogref.close();
+  save(which) {
+    which ? this.dialogref.close({
+      reData: 'new'
+    }) : this.dialogref.close()
   }
 }
