@@ -1,6 +1,8 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  HostBinding,
+  HostListener
 } from '@angular/core';
 import {
   MdDialog
@@ -14,24 +16,34 @@ import {
 import {
   ConfimDialogComponent
 } from '../../shared/confim-dialog/confim-dialog.component';
+import {
+  slideToRight
+} from '../../anims/router.anim';
+import {
+  staggerAnims
+} from '../../anims/list.anim';
 
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.scss'],
+  animations: [slideToRight, staggerAnims]
 })
 export class ProjectListComponent implements OnInit {
   projects = [{
+      id: 1,
       name: '企业协作平台',
       desc: '这是一个企业内部项目',
       coverImg: 'assets/img/covers/0.jpg'
     },
     {
+      id: 2,
       name: 'asdasdfa',
       desc: '这是一个企业内部项目',
       coverImg: 'assets/img/covers/1.jpg'
     }
   ];
+  @HostBinding('@routeAnim') state;
   constructor(private dialog: MdDialog) {}
 
   ngOnInit() {}
@@ -42,6 +54,7 @@ export class ProjectListComponent implements OnInit {
       }
     });
     openDialog.afterClosed().subscribe(result => {
+      this.projects=[...this.projects,...result.reData]
       console.log(result)
     })
   }

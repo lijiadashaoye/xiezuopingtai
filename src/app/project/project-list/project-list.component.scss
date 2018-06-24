@@ -1,7 +1,13 @@
 :host{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.itemDiv{
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
+    align-items: flex-start;
+    height:100%;
 }
 .card{
     flex: 0 0 350px;

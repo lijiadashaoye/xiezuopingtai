@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  HostBinding
 } from '@angular/core';
 import {
   MdDialog
@@ -17,10 +18,14 @@ import {
 import {
   NewTaskListComponent
 } from '../new-task-list/new-task-list.component';
+import {
+  slideToRight
+} from '../../anims/router.anim'
 @Component({
   selector: 'app-task-home',
   templateUrl: './task-home.component.html',
-  styleUrls: ['./task-home.component.scss']
+  styleUrls: ['./task-home.component.scss'],
+  animations:[slideToRight]
 })
 export class TaskHomeComponent implements OnInit {
   lists = [{
@@ -114,7 +119,7 @@ export class TaskHomeComponent implements OnInit {
     }
   ]
   constructor(private dialog: MdDialog) {}
-
+  @HostBinding('@routeAnim') state;
   ngOnInit() {}
   onNewTask() {
     let openDialog = this.dialog.open(NewTaskComponent, {

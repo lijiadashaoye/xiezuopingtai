@@ -18,8 +18,14 @@ export class SidebarComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit() {}
-  toTask() {
+  toTask(type) {
+    switch (type){
+      case 'project':this.router.navigate(['project']);break;
+      case 'month':this.router.navigate(['task']);break;
+      case 'week':this.router.navigate(['project']);break;
+      case 'day':this.router.navigate(['project']);break;
+    }
     this.toggle.emit()
-    this.router.navigate(['task'])
+    
   }
 }
