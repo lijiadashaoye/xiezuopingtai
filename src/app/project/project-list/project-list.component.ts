@@ -2,7 +2,9 @@ import {
   Component,
   OnInit,
   HostBinding,
-  HostListener
+  HostListener,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
 } from '@angular/core';
 import {
   MdDialog
@@ -27,7 +29,8 @@ import {
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.scss'],
-  animations: [slideToRight, staggerAnims]
+  animations: [slideToRight, staggerAnims],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ProjectListComponent implements OnInit {
   projects = [{
@@ -44,7 +47,10 @@ export class ProjectListComponent implements OnInit {
     }
   ];
   @HostBinding('@routeAnim') state;
-  constructor(private dialog: MdDialog) {}
+  constructor(
+    private dialog: MdDialog,
+    private chan:ChangeDetectorRef
+  ) {}
 
   ngOnInit() {}
   openNewProjectDialog() {
@@ -55,7 +61,7 @@ export class ProjectListComponent implements OnInit {
     });
     openDialog.afterClosed().subscribe(result => {
       this.projects=[...this.projects,...result.reData]
-      console.log(result)
+      this.chan.markForCheck();
     })
   }
   editClick() {
