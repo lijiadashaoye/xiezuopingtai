@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { MdSidenavModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {DirectiveModule} from './directive/directive.module.ts.module'
+import {DirectiveModule} from './directive/directive.module'
 @NgModule({
   declarations: [
     AppComponent,

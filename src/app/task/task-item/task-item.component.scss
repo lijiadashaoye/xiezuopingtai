@@ -1,9 +1,8 @@
-
 .due-date {
   background: rgb(241, 47, 47);
   color: white;
-  padding:1px 3px;
-  font-size:10px;
+  padding: 1px 3px;
+  font-size: 10px;
 }
 
 .iconsd {
@@ -12,20 +11,31 @@
   height: 50px;
   border-radius: 50%;
   overflow: hidden;
-  order:10;
+  order: 10;
 }
-md-icon{
+
+md-icon {
   vertical-align: middle;
 }
-.selected{
-  color:rgba(144, 147, 150, 0.8);;
+
+.selected {
+  color: rgba(144, 147, 150, 0.8);
+  ;
 }
-.one{
-  border-left:3px solid rgb(55, 0, 255);
+
+.one {
+  border-left: 3px solid rgb(55, 0, 255);
 }
-.two{
-  border-left:3px solid rgb(0, 255, 0);
+
+.two {
+  border-left: 3px solid rgb(0, 255, 0);
 }
-.three{
-  border-left:3px solid rgb(255, 60, 0);
+
+.three {
+  border-left: 3px solid rgb(255, 60, 0);
+}
+
+.drag-start {
+  opacity: .3;
+  border: 1px dashed red;
 }

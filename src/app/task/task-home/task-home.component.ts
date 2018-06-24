@@ -25,7 +25,7 @@ import {
   selector: 'app-task-home',
   templateUrl: './task-home.component.html',
   styleUrls: ['./task-home.component.scss'],
-  animations:[slideToRight]
+  animations: [slideToRight]
 })
 export class TaskHomeComponent implements OnInit {
   lists = [{
@@ -182,5 +182,17 @@ export class TaskHomeComponent implements OnInit {
       result ? list.name = result : null
       console.log(result)
     })
+  }
+  handleMove(srcData, list) {
+    switch (srcData.tag) {
+      case 'task-item':
+        console.log('handing item');
+        break;
+      case 'task-list':
+        console.log('handing list');
+        break;
+      default:
+        break;
+    }
   }
 }

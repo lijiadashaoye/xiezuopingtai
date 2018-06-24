@@ -23,7 +23,12 @@ import {
   MdNativeDateModule,
   MdSelectModule,
 } from '@angular/material';
-import {ConfimDialogComponent} from './confim-dialog/confim-dialog.component';
+import {
+  ConfimDialogComponent
+} from './confim-dialog/confim-dialog.component';
+import {
+  DirectiveModule
+} from '../directive/directive.module'
 @NgModule({
   imports: [
     CommonModule,
@@ -44,6 +49,7 @@ import {ConfimDialogComponent} from './confim-dialog/confim-dialog.component';
     MdDatepickerModule,
     MdNativeDateModule,
     MdSelectModule,
+    DirectiveModule,
   ],
   exports: [
     CommonModule,
@@ -63,11 +69,12 @@ import {ConfimDialogComponent} from './confim-dialog/confim-dialog.component';
     MdDatepickerModule,
     MdNativeDateModule,
     MdSelectModule,
+    DirectiveModule,
   ],
   declarations: [
     ConfimDialogComponent
   ],
-  entryComponents:[
+  entryComponents: [
     ConfimDialogComponent
   ]
 })

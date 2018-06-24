@@ -1,15 +1,40 @@
-import { NgModule, SkipSelf, Optional } from '@angular/core';
-import { SharedModule } from '../shared/shared.module';
-import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { FooterComponent } from './footer/footer.component'
+import {
+  NgModule,
+  SkipSelf,
+  Optional
+} from '@angular/core';
+import {
+  SharedModule
+} from '../shared/shared.module';
+import {
+  HeaderComponent
+} from './header/header.component';
+import {
+  SidebarComponent
+} from './sidebar/sidebar.component';
+import {
+  FooterComponent
+} from './footer/footer.component'
 
-import { MdIconRegistry } from '@angular/material';
-import { DomSanitizer } from '@angular/platform-browser';
-import { loadSvgResources } from '../utils/sug.utils';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import {
+  MdIconRegistry
+} from '@angular/material';
+import {
+  DomSanitizer
+} from '@angular/platform-browser';
+import {
+  loadSvgResources
+} from '../utils/sug.utils';
+import {
+  HttpClientModule
+} from '@angular/common/http';
+import {
+  HttpModule
+} from '@angular/http';
+import {
+  BrowserAnimationsModule
+} from '@angular/platform-browser/animations';
+import 'rxjs/operator/take'
 @NgModule({
   imports: [
     SharedModule,
