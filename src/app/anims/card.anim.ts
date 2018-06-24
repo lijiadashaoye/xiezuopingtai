@@ -13,10 +13,10 @@ export const cardAnim = trigger('card', [
     cursor: 'pointer',
   })),
   state('hover', style({
-    transform: 'scale(1.05)',
-    'box-shadow': '2px 2px 20px rgba(0,0,0,.5)',
+    transform: 'scale(0.95)',
+    'box-shadow': '0px 0px 30px rgba(0,0,0,.5)',
     cursor: 'pointer',
   })),
-  transition('out=>hover', animate('500ms')),
-  transition('hover=>out', animate('200ms')),
+  transition('out=>hover', animate('300ms')),
+  transition('hover=>out', animate('100ms')),
 ])

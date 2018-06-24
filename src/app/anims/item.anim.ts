@@ -15,6 +15,6 @@ export const itemAnim = trigger('item', [
     'border-left-width': '8px',
     cursor: 'pointer',
   })),
-  transition('out=>in', animate('200ms')),
-  transition('in=>out', animate('200ms')),
+  transition('out=>in', animate('100ms')),
+  transition('in=>out', animate('100ms')),
 ])
