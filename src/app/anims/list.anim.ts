@@ -13,7 +13,7 @@ export const staggerAnims = trigger('staggerAnim', [
     query(":enter", style({
       opacity: 0
     }),{optional:true}),
-    query(":enter", stagger(100, [
+    query(":enter", stagger(200, [
       animate('500ms', style({
         opacity: 1
       }))
@@ -21,7 +21,7 @@ export const staggerAnims = trigger('staggerAnim', [
     query(":leave", style({
       opacity: 1
     }),{optional:true}),
-    query(":enter", stagger(100, [
+    query(":leave", stagger(100, [
       animate('100ms', style({
         opacity: 0
       }))
