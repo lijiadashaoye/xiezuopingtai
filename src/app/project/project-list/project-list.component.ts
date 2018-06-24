@@ -30,7 +30,7 @@ import {
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.scss'],
   animations: [slideToRight, staggerAnims],
-  changeDetection:ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProjectListComponent implements OnInit {
   projects = [{
@@ -49,7 +49,7 @@ export class ProjectListComponent implements OnInit {
   @HostBinding('@routeAnim') state;
   constructor(
     private dialog: MdDialog,
-    private chan:ChangeDetectorRef
+    private chan: ChangeDetectorRef
   ) {}
 
   ngOnInit() {}
@@ -60,8 +60,11 @@ export class ProjectListComponent implements OnInit {
       }
     });
     openDialog.afterClosed().subscribe(result => {
-      this.projects=[...this.projects,...result.reData]
-      this.chan.markForCheck();
+      if (result) {
+        this.projects = [...this.projects, ...result.reData]
+        this.chan.markForCheck();
+      }
+
     })
   }
   editClick() {
