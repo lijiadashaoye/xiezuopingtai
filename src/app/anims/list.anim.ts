@@ -21,7 +21,7 @@ export const staggerAnims = trigger('staggerAnim', [
     query(":leave", style({
       opacity: 1
     }),{optional:true}),
-    query(":leave", stagger(100, [
+    query(":leave", stagger(200, [
       animate('100ms', style({
         opacity: 0
       }))
