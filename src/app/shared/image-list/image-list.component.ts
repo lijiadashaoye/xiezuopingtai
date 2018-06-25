@@ -42,6 +42,7 @@ export class ImageListComponent implements ControlValueAccessor {
   };
 
   registerOnTouched(fn: any): void { };
+  
   validate(c: FormControl) {
     return this.selected ? null : { key: '表单组建验证错误' }
   }

@@ -8,7 +8,7 @@
   </ng-template>
 </div>
 <div class="scroll-container">
-  <md-grid-list [cols]="cols" rowHeight="70px">
+  <md-grid-list [cols]="cols" rowHeight="60px">
     <md-grid-tile *ngFor="let item of items;let i=index">
       <div class="image-container" (click)="onChage(i)">
         <md-icon [svgIcon]="item" class="radiu" *ngIf="useSvgIcon else imgItem" style="margin:3px;"></md-icon>
