@@ -30,7 +30,8 @@ import {
   DirectiveModule
 } from '../directive/directive.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ImageListComponent } from './image-list/image-list.component'
+import { ImageListComponent } from './image-list/image-list.component';
+import { ServiceModule } from '../service/service.module'
 @NgModule({
   imports: [
     CommonModule,
@@ -54,6 +55,7 @@ import { ImageListComponent } from './image-list/image-list.component'
     DirectiveModule,
     FormsModule,
     ReactiveFormsModule,
+    ServiceModule.forRoot(),
   ],
   exports: [
     CommonModule,

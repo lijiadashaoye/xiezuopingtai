@@ -51,7 +51,13 @@ import 'rxjs/operator/take'
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-  ]
+  ], providers: [
+    {
+      provide: 'BASE_URL', useValue: {
+        baseUrl: "http://localhost:3000"
+      }
+    }
+  ],
 })
 export class CoreModule {
   constructor(

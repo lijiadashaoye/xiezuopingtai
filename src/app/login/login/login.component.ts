@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
-
+import { QuoteService } from '../../service/quote.service'
+import { Quote } from '../../domain/quote.model';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,10 +10,15 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
-  loginImage = '';
+  quote: Quote = {
+    "cn": "想有发现就要实验，这项实验需要时间。—《神盾局特工》",
+    "en": "Discovery requires experimentation, and this experiment will take time.",
+    "pic": "/assets/img/quotes/3.jpg"
+  }
   constructor(
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private quoteService$: QuoteService
   ) { }
 
   ngOnInit() {
@@ -20,8 +26,10 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.compose([Validators.required, this.validates])],
       password: ['', Validators.required]
     })
-    let num = Math.floor(Math.random() * 10);
-    this.loginImage = `assets/img/quotes/${num}.jpg`;
+
+    this.quoteService$.getQuote().subscribe(val => {
+      this.quote = val;
+    })
   }
   login() {
     if (this.form.valid) {
