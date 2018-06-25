@@ -24,4 +24,4 @@ import {
     DragDropService
   ]
 })
-export class DirectiveModule {}
+export class DirectiveModule { }

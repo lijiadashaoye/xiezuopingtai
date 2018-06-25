@@ -20,7 +20,7 @@ export class DropDirective {
   @Input() dragEnterClass: string;
   @Input() dropTags: string[] = [];
   private data$;
-  @Output() dropped = new EventEmitter < DragData > ()
+  @Output() dropped = new EventEmitter<DragData>()
   constructor(
     private el: ElementRef,
     private rd: Renderer2,

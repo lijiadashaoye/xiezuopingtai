@@ -29,98 +29,98 @@ import {
 })
 export class TaskHomeComponent implements OnInit {
   lists = [{
+    id: 1,
+    name: '待办',
+    tasks: [{
       id: 1,
-      name: '待办',
-      tasks: [{
-          id: 1,
-          desc: '任务一：吃饭',
-          completed: true,
-          priority: 3,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatar:svg-3'
-          },
-          dueDate: new Date()
-        },
-        {
-          id: 1,
-          desc: '任务二：阿斯顿发发刚刚才vsadfasdfasdfasdfb多个',
-          completed: false,
-          priority: 2,
-          owner: {
-            id: 1,
-            name: '旺旺',
-            avatar: 'avatar:svg-6'
-          },
-          dueDate: new Date()
-        },
-      ]
+      desc: '任务一：吃饭',
+      completed: true,
+      priority: 3,
+      owner: {
+        id: 1,
+        name: '张三',
+        avatar: 'avatar:svg-3'
+      },
+      dueDate: new Date()
     },
     {
       id: 1,
-      name: '进行中',
-      tasks: [{
-          id: 1,
-          desc: '任务一：拉屎',
-          completed: false,
-          reminder: true,
-          priority: 2,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatar:svg-4'
-          },
-          dueDate: new Date()
-        },
-        {
-          id: 1,
-          desc: '任务二：阿斯顿发发刚刚才vb',
-          completed: false,
-          priority: 1,
-          owner: {
-            id: 1,
-            name: '旺旺',
-            avatar: 'avatar:svg-8'
-          },
-          dueDate: new Date()
-        },
-      ]
+      desc: '任务二：阿斯顿发发刚刚才vsadfasdfasdfasdfb多个',
+      completed: false,
+      priority: 2,
+      owner: {
+        id: 1,
+        name: '旺旺',
+        avatar: 'avatar:svg-6'
+      },
+      dueDate: new Date()
+    },
+    ]
+  },
+  {
+    id: 2,
+    name: '进行中',
+    tasks: [{
+      id: 1,
+      desc: '任务一：拉屎',
+      completed: false,
+      reminder: true,
+      priority: 2,
+      owner: {
+        id: 1,
+        name: '张三',
+        avatar: 'avatar:svg-4'
+      },
+      dueDate: new Date()
     },
     {
       id: 1,
-      name: '已完成',
-      tasks: [{
-          id: 1,
-          desc: '任务一：喝水',
-          completed: false,
-          reminder: false,
-          priority: 3,
-          owner: {
-            id: 1,
-            name: '张三',
-            avatar: 'avatar:svg-11'
-          },
-          dueDate: new Date()
-        },
-        {
-          id: 1,
-          desc: '任务二：dfadfaxcbbxcvb',
-          completed: false,
-          priority: 1,
-          owner: {
-            id: 1,
-            name: '旺旺',
-            avatar: 'avatar:svg-7'
-          },
-          dueDate: new Date()
-        },
-      ]
-    }
+      desc: '任务二：阿斯顿发发刚刚才vb',
+      completed: false,
+      priority: 1,
+      owner: {
+        id: 1,
+        name: '旺旺',
+        avatar: 'avatar:svg-8'
+      },
+      dueDate: new Date()
+    },
+    ]
+  },
+  {
+    id: 3,
+    name: '已完成',
+    tasks: [{
+      id: 1,
+      desc: '任务一：喝水',
+      completed: false,
+      reminder: false,
+      priority: 3,
+      owner: {
+        id: 1,
+        name: '张三',
+        avatar: 'avatar:svg-11'
+      },
+      dueDate: new Date()
+    },
+    {
+      id: 1,
+      desc: '任务二：dfadfaxcbbxcvb',
+      completed: false,
+      priority: 1,
+      owner: {
+        id: 1,
+        name: '旺旺',
+        avatar: 'avatar:svg-7'
+      },
+      dueDate: new Date()
+    },
+    ]
+  }
   ]
-  constructor(private dialog: MdDialog) {}
+  constructor(private dialog: MdDialog) { }
   @HostBinding('@routeAnim') state;
-  ngOnInit() {}
+  ngOnInit() { }
   onNewTask() {
     let openDialog = this.dialog.open(NewTaskComponent, {
       data: {
@@ -186,9 +186,11 @@ export class TaskHomeComponent implements OnInit {
   handleMove(srcData, list) {
     switch (srcData.tag) {
       case 'task-item':
+        console.log(list);
         console.log('handing item');
         break;
       case 'task-list':
+        console.log(list);
         console.log('handing list');
         break;
       default:

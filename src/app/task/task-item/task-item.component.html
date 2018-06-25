@@ -2,8 +2,10 @@
   'one':item.priority==3,
   'two':item.priority==2,
   'three':item.priority==1
-  }" (click)="onItemClick()" 
+  }"
+  (click)="onItemClick()" 
   [@item]='widerPriority'
+  
   [app-draggable]='true'
   [dragTag]="'task-item'"
   [dragData]="item"

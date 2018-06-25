@@ -10,7 +10,7 @@ import {
 } from '../drag-drop.service';
 
 @Directive({
-  selector: '[app-draggable][draggedClass][dropTag][dragData]'
+  selector: '[app-draggable][draggedClass][dragTag][dragData]'
 })
 export class DragDirective {
   private _isDraggable = false;
@@ -21,7 +21,7 @@ export class DragDirective {
   @Input('app-draggable') // @Input()后接set 和 get，表示调用或设置小括
   set isDraggables(val: boolean) { // 号('app-draggable')的属性时，执行set或get方法来确认属性值
     this._isDraggable = val;
-    this.rd.setAttribute(this.el.nativeElement, 'draggable', `${val}`)
+    this.rd.setAttribute(this.el.nativeElement, 'draggable', `${val}`);
   }
   get isDraggables() {
     return this._isDraggable;
