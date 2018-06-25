@@ -1,28 +1,33 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <md-card>
     <md-card-header>
       <md-card-title>注册：</md-card-title>
     </md-card-header>
     <md-card-content>
-      <md-input-container hintLabel="必填项" class="full-width">
-        <input mdInput type="text" placeholder="您的email">
+      <md-input-container class="full-width">
+        <input mdInput type="text" placeholder="您的email" formControlName="email">
       </md-input-container>
-      <md-input-container hintLabel="必填项" class="full-width">
-        <input mdInput type="text" placeholder="密码">
+      <md-input-container class="full-width">
+        <input mdInput type="text" placeholder="您的姓名" formControlName="name">
       </md-input-container>
-      <md-input-container hintLabel="必填项" class="full-width">
-        <input mdInput type="text" placeholder="重复输入您的密码">
+      <md-input-container class="full-width">
+        <input mdInput type="text" placeholder="密码" formControlName="password">
+      </md-input-container>
+      <md-input-container class="full-width">
+        <input mdInput type="text" placeholder="重复输入您的密码" formControlName="surePassword">
       </md-input-container>
 
-      <md-grid-list cols="8" rowHeight="1:1">
+      <app-image-list
+      [items]="items"
+      [title]="title"
+      [cols]="cols"
+      [useSvgIcon]="useSvgIcon"
+      (changeImage)="ischangeImage($event)"
+      formControlName="avater"
+      ></app-image-list>
 
-        <md-grid-tile *ngFor="let item of items">
-          <md-icon [svgIcon]="item" class="radiu"></md-icon>
-        </md-grid-tile>
-
-      </md-grid-list>
-
-      <button md-raised-button type="button">注册</button>
+      <button md-raised-button type="submit"color="primary">注册</button>
+      <button md-raised-button type="button" (click)="historyBack($event)">返回</button>
     </md-card-content>
   </md-card>
 </form>

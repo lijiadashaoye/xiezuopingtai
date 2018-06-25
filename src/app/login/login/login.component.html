@@ -1,16 +1,18 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form,$event)">
   <md-card>
     <md-card-header>
       <md-card-title>登录：</md-card-title>
     </md-card-header>
     <md-card-content>
       <md-input-container hintLabel="必填项" class="full-width">
-        <input mdInput type="text" placeholder="您的email">
+        <input mdInput type="text" placeholder="您的email" formControlName="email">
       </md-input-container>
       <md-input-container hintLabel="必填项" class="full-width">
-        <input mdInput type="text" placeholder="密码">
+        <input mdInput type="text" placeholder="密码" formControlName="password">
       </md-input-container>
-      <button md-raised-button type="button" (click)="login()">登录</button>
+      <hr>
+      <button md-raised-button type="button" color="primary"
+       [disabled]="!form.valid" (click)="login()">登录</button>
     </md-card-content>
     <md-card-actions class="text-right">
       <p>还没有账户吗？
@@ -20,7 +22,6 @@
         <a href="" routerLink="forget">找回</a>
       </p>
     </md-card-actions>
-
   </md-card>
 
   <md-card>
@@ -28,10 +29,10 @@
       <md-card-title>每日佳句</md-card-title>
       <md-card-subtitle>爱的发生的发生的发生的发生的发的</md-card-subtitle>
     </md-card-header>
-    <img md-card-image src="assets/img/quote_fallback.jpg">
+    <img md-card-image [src]="loginImage">
     <md-card-content>
       <span>
-          asdfasdfasdfasdfasdfasdfasdfasdfas阿斯顿发生的发生的啊时代发生地方
+        asdfasdfasdfasdfasdfasdfasdfasdfas阿斯顿发生的发生的啊时代发生地方
       </span>
     </md-card-content>
   </md-card>

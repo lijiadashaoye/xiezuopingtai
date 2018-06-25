@@ -29,7 +29,8 @@ import {
 import {
   DirectiveModule
 } from '../directive/directive.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ImageListComponent } from './image-list/image-list.component'
 @NgModule({
   imports: [
     CommonModule,
@@ -75,9 +76,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     DirectiveModule,
     FormsModule,
     ReactiveFormsModule,
+    ImageListComponent,
   ],
   declarations: [
-    ConfimDialogComponent
+    ConfimDialogComponent,
+    ImageListComponent
   ],
   entryComponents: [
     ConfimDialogComponent
