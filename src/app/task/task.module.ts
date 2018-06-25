@@ -28,6 +28,7 @@ import {
 import {
   NewTaskListComponent
 } from './new-task-list/new-task-list.component';
+import { QuickTaskComponent } from './quick-task/quick-task.component';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import {
     TaskItemComponent,
     NewTaskComponent,
     CopyTaskComponent,
-    NewTaskListComponent
+    NewTaskListComponent,
+    QuickTaskComponent
   ],
   entryComponents: [
     NewTaskComponent,
@@ -49,4 +51,4 @@ import {
     NewTaskListComponent
   ]
 })
-export class TaskModule {}
+export class TaskModule { }

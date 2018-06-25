@@ -28,7 +28,8 @@ import {
 } from './confim-dialog/confim-dialog.component';
 import {
   DirectiveModule
-} from '../directive/directive.module'
+} from '../directive/directive.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 @NgModule({
   imports: [
     CommonModule,
@@ -50,6 +51,8 @@ import {
     MdNativeDateModule,
     MdSelectModule,
     DirectiveModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     CommonModule,
@@ -70,6 +73,8 @@ import {
     MdNativeDateModule,
     MdSelectModule,
     DirectiveModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     ConfimDialogComponent
@@ -78,4 +83,4 @@ import {
     ConfimDialogComponent
   ]
 })
-export class SharedModule {}
+export class SharedModule { }

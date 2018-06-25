@@ -7,6 +7,7 @@
   [dragTag]="'task-list'"
   [draggedClass]="'drag-start'"
   [dragData]="list"
+  [ngStyle]="{'order':list.order}"
   
   (dropped)="handleMove($event,list)"
   style="padding:0 0 0 3px;">
@@ -16,6 +17,9 @@
      (headerDelete)="headerDelete()"
      (changeListName)="changeListNames(list)"
      ></app-task-header>
+
+     <app-quick-task (inpData)="getInpData($event)"></app-quick-task>
+
     <app-task-item class="list-container" 
     *ngFor="let task of list.tasks" 
     [item]="task"

@@ -22,4 +22,11 @@
     <span md-line>日视图</span>
     <span md-line md-subheader>按日查看您的任务</span>
   </md-list-item>
+
+  <h3 md-subheader>用户</h3>
+  <md-list-item (click)="toTask('login')">
+    <md-icon svgIcon="unassigned" md-list-icon></md-icon>
+    <span md-line>注销</span>
+    <span md-line md-subheader>退出当前用户</span>
+  </md-list-item>
 </md-nav-list>
