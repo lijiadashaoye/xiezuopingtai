@@ -5,7 +5,6 @@ import { Quote } from '../domain/quote.model'
 
 @Injectable()
 export class QuoteService {
-
   constructor(
     private http: Http,
     @Inject('BASE_URL') private baseUrl
