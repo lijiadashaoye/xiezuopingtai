@@ -39,7 +39,11 @@ import 'rxjs/operator/debounceTime'
 import 'rxjs/operator/distinctUntilChanged'
 import 'rxjs/operator/filter'
 import 'rxjs/operator/map'
-
+import 'rxjs/operator/mapTo'
+import 'rxjs/observable/from'
+import 'rxjs/operator/mergeMap'
+import 'rxjs/operator/count'
+import 'rxjs/operator/switchMap'
 @NgModule({
   imports: [
     SharedModule,

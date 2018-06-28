@@ -1,8 +1,9 @@
-<div [@staggerAnim]='projects.length'class="itemDiv">
-  <app-project-item *ngFor="let project of projects" (inviteOutput)="toInvite()" (toDelete)="toDelete()" [item]="project" 
-    (editClick)="editClick()"class="card">
-  </app-project-item>
-</div>
+
+  <div [@staggerAnim]='projects'class="itemDiv">
+    <app-project-item *ngFor="let project of projects" (inviteOutput)="toInvite()" (toDelete)="toDelete()" [item]="project" 
+      (editClick)="editClick()"class="card">
+    </app-project-item>
+  </div>
 
 <button md-fab type="button" (click)="openNewProjectDialog()" class="fab-button">
   <md-icon>add</md-icon>

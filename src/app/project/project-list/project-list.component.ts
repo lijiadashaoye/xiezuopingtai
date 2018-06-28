@@ -24,6 +24,7 @@ import {
 import {
   staggerAnims
 } from '../../anims/list.anim';
+import { ProjectService } from '../../service/project.service'
 
 @Component({
   selector: 'app-project-list',
@@ -33,26 +34,22 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProjectListComponent implements OnInit {
-  projects = [{
-      id: 1,
-      name: '企业协作平台',
-      desc: '这是一个企业内部项目',
-      coverImg: 'assets/img/covers/0.jpg'
-    },
-    {
-      id: 2,
-      name: 'asdasdfa',
-      desc: '这是一个企业内部项目',
-      coverImg: 'assets/img/covers/1.jpg'
-    }
-  ];
+  projects;
   @HostBinding('@routeAnim') state;
   constructor(
     private dialog: MdDialog,
-    private chan: ChangeDetectorRef
-  ) {}
+    private chan: ChangeDetectorRef,
+    private service$: ProjectService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.service$.get("1").subscribe(
+      project => {
+        this.projects = project;
+        this.chan.markForCheck()
+      })
+  }
+
   openNewProjectDialog() {
     let openDialog = this.dialog.open(NewProjectComponent, {
       data: {

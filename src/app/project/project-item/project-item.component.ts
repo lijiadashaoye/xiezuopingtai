@@ -23,7 +23,7 @@ export class ProjectItemComponent implements OnInit {
   @Output() editClick = new EventEmitter();
   @Output() toDelete = new EventEmitter();
   @HostBinding('@card') cardState = 'out';
-  constructor() {}
+  constructor() { }
   @HostListener('mouseover')
   onmouseenter() {
     this.cardState = 'hover'
@@ -32,7 +32,7 @@ export class ProjectItemComponent implements OnInit {
   onmouseleave() {
     this.cardState = 'out'
   }
-  ngOnInit() {}
+  ngOnInit() { }
   toDo(which) {
     switch (which) {
       case 'invite':
