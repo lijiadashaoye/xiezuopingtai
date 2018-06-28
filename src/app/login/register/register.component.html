@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form [formGroup]="form" (ngSubmit)="onSubmit($event)">
   <md-card>
     <md-card-header>
       <md-card-title>注册：</md-card-title>
@@ -17,7 +17,7 @@
         <input mdInput type="text" placeholder="重复输入您的密码" formControlName="surePassword">
       </md-input-container>
 
-      <app-age-input></app-age-input>
+      <app-age-input formControlName="dateOfBirth"></app-age-input>
       
       <app-image-list
       [items]="items"

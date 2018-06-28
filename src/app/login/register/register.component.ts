@@ -24,7 +24,8 @@ export class RegisterComponent implements OnInit {
       password: ['', Validators.required],
       name: ['', Validators.required],
       surePassword: ['', Validators.required],
-      avater: ''
+      avater: '',
+      dateOfBirth: ['1990-10-2']
     })
     Observable.range(1, 16).subscribe(val => {
       this.items.push(`avatar:svg-${val}`)
@@ -44,7 +45,9 @@ export class RegisterComponent implements OnInit {
     }
     this.useSvgIcon = !e.checked
   }
-  onSubmit() {
+  onSubmit(ev: Event) {
+    ev.preventDefault();
+    ev.stopPropagation();
     if (this.form.valid) {
       history.back()
     }

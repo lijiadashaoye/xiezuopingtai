@@ -12,9 +12,6 @@ import {
   isBefore,
   parse,
   format,
-  isValid,
-  isDate,
-  isFuture
 } from 'date-fns';
 import { isValidDate } from '../../utils/date.util';
 
@@ -52,7 +49,7 @@ export class AgeInputComponent implements ControlValueAccessor, OnDestroy {
   @Input() yearsBottom = 1;
   @Input() yearsTop = 150;
   @Input() debounceTime = 300;
-  @Input() forma = 'YYY-MM-DD'
+  @Input() forma = 'YYYY-MM-DD'
 
   form: FormGroup;
   selectecUnit = AgeUnit.Year;
@@ -139,16 +136,15 @@ export class AgeInputComponent implements ControlValueAccessor, OnDestroy {
   }
   toDate(age: Age): string {
     const now = Date.now();
-    const dateFormat = 'YYYY-MM-DD'
     switch (age.unit) {
       case AgeUnit.Year: {
-        return format(subYears(now, age.age), dateFormat)
+        return format(subYears(now, age.age), this.forma)
       };
       case AgeUnit.Month: {
-        return format(subMonths(now, age.age), dateFormat)
+        return format(subMonths(now, age.age), this.forma)
       };
       case AgeUnit.Day: {
-        return format(subDays(now, age.age), dateFormat)
+        return format(subDays(now, age.age), this.forma)
       };
     }
   }
