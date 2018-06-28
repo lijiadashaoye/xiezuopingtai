@@ -31,7 +31,7 @@ export class ImageListComponent implements ControlValueAccessor {
 
   onChage(index) {
     this.selected = this.items[index];
-    this.propagateChange(this.selected)
+    this.propagateChange(this.selected)  // 参数即为向外发送的值，用来作为form表单数据
   }
   writeValue(obj: any): void {
     this.selected = obj;

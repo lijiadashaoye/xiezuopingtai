@@ -22,6 +22,7 @@ import {
   MdDatepickerModule,
   MdNativeDateModule,
   MdSelectModule,
+  MdButtonToggleModule,
 } from '@angular/material';
 import {
   ConfimDialogComponent
@@ -31,7 +32,8 @@ import {
 } from '../directive/directive.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageListComponent } from './image-list/image-list.component';
-import { ServiceModule } from '../service/service.module'
+import { ServiceModule } from '../service/service.module';
+import { AgeInputComponent } from './age-input/age-input.component'
 @NgModule({
   imports: [
     CommonModule,
@@ -56,6 +58,7 @@ import { ServiceModule } from '../service/service.module'
     FormsModule,
     ReactiveFormsModule,
     ServiceModule.forRoot(),
+    MdButtonToggleModule,
   ],
   exports: [
     CommonModule,
@@ -79,10 +82,13 @@ import { ServiceModule } from '../service/service.module'
     FormsModule,
     ReactiveFormsModule,
     ImageListComponent,
+    AgeInputComponent,
+    MdButtonToggleModule,
   ],
   declarations: [
     ConfimDialogComponent,
-    ImageListComponent
+    ImageListComponent,
+    AgeInputComponent
   ],
   entryComponents: [
     ConfimDialogComponent

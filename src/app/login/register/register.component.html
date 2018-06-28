@@ -17,6 +17,8 @@
         <input mdInput type="text" placeholder="重复输入您的密码" formControlName="surePassword">
       </md-input-container>
 
+      <app-age-input></app-age-input>
+      
       <app-image-list
       [items]="items"
       [title]="title"
@@ -25,7 +27,6 @@
       (changeImage)="ischangeImage($event)"
       formControlName="avater"
       ></app-image-list>
-
       <button md-raised-button type="submit"color="primary">注册</button>
       <button md-raised-button type="button" (click)="historyBack($event)">返回</button>
     </md-card-content>

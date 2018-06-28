@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import 'rxjs/observable/range';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms'
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
