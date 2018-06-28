@@ -35,6 +35,11 @@ import {
   BrowserAnimationsModule
 } from '@angular/platform-browser/animations';
 import 'rxjs/operator/take'
+import 'rxjs/operator/debounceTime'
+import 'rxjs/operator/distinctUntilChanged'
+import 'rxjs/operator/filter'
+import 'rxjs/operator/map'
+
 @NgModule({
   imports: [
     SharedModule,
