@@ -72,6 +72,7 @@ export class ProjectListComponent implements OnInit {
     });
     openDialog.afterClosed().subscribe(result => {
       console.log(result)
+      this.chan.markForCheck();
     })
   }
   toInvite() {
@@ -88,6 +89,7 @@ export class ProjectListComponent implements OnInit {
     });
     openDialog.afterClosed().subscribe(result => {
       console.log(result)
+      this.chan.markForCheck();
     })
   }
 
