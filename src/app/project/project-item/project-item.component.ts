@@ -23,6 +23,7 @@ export class ProjectItemComponent implements OnInit {
   @Output() editClick = new EventEmitter();
   @Output() toDelete = new EventEmitter();
   @HostBinding('@card') cardState = 'out';
+  imgType;
   constructor() { }
   @HostListener('mouseover')
   onmouseenter() {
@@ -32,7 +33,11 @@ export class ProjectItemComponent implements OnInit {
   onmouseleave() {
     this.cardState = 'out'
   }
-  ngOnInit() { }
+  ngOnInit() {
+    let str = this.item.coverImg;
+    let reg = /svg/ig;
+    this.imgType = reg.test(str);
+  }
   toDo(which) {
     switch (which) {
       case 'invite':

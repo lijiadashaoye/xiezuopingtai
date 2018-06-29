@@ -4,7 +4,8 @@ import {
   HostBinding,
   HostListener,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  OnDestroy
 } from '@angular/core';
 import {
   MdDialog
@@ -24,8 +25,8 @@ import {
 import {
   staggerAnims
 } from '../../anims/list.anim';
-import { ProjectService } from '../../service/project.service'
-
+import { ProjectService } from '../../service/project.service';
+import { Subscription } from 'rxjs'
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
@@ -33,47 +34,65 @@ import { ProjectService } from '../../service/project.service'
   animations: [slideToRight, staggerAnims],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProjectListComponent implements OnInit {
+export class ProjectListComponent implements OnInit, OnDestroy {
   projects;
+  doWhat;
+  sub: Subscription;
   @HostBinding('@routeAnim') state;
   constructor(
     private dialog: MdDialog,
     private chan: ChangeDetectorRef,
-    private service$: ProjectService
+    private service$: ProjectService,
   ) { }
 
   ngOnInit() {
-    this.service$.get("1").subscribe(
+    this.sub = this.service$.get('').subscribe(
       project => {
         this.projects = project;
         this.chan.markForCheck()
       })
   }
-
-  openNewProjectDialog() {
-    let openDialog = this.dialog.open(NewProjectComponent, {
-      data: {
-        title: '新增项目'
-      }
-    });
-    openDialog.afterClosed().subscribe(result => {
-      if (result) {
-        this.projects = [...this.projects, ...result.reData]
-        this.chan.markForCheck();
-      }
-
-    })
+  ngOnDestroy() {
+    this.sub.unsubscribe()
   }
-  editClick() {
-    let openDialog = this.dialog.open(NewProjectComponent, {
-      data: {
-        title: '编辑项目'
+
+  editClick(data) {
+    let which
+    if (data) {
+      this.doWhat = 'edit'
+      which = {
+        title: '编辑项目',
+        project: data,
+        useSvgIcon: false
       }
+    } else {
+      this.doWhat = 'new'
+      which = {
+        title: '新增项目',
+        project: null,
+        useSvgIcon: true,
+      }
+    }
+    let openDialog = this.dialog.open(NewProjectComponent, {
+      data: which
     });
-    openDialog.afterClosed().subscribe(result => {
-      console.log(result)
-      this.chan.markForCheck();
-    })
+    openDialog.afterClosed()
+      .filter(_ => _)
+      .subscribe(result => {
+        if (this.doWhat == 'new') {
+          this.service$.add(result.reData).subscribe(res => {
+            this.projects.push(res)
+          })
+        }
+        if (this.doWhat == 'edit') {
+          this.service$.update(result.reData).subscribe(res => {
+            let kk = this.projects.filter(item => res.id == item.id)[0];
+            let index = this.projects.indexOf(kk)
+            this.projects[index] = { ...this.projects[index], ...res }
+          })
+        }
+        this.chan.markForCheck()
+      })
   }
   toInvite() {
     let openDialog = this.dialog.open(InviteComponent);
@@ -81,14 +100,20 @@ export class ProjectListComponent implements OnInit {
       console.log(result)
     })
   }
-  toDelete() {
+  toDelete(item) {
     let openDialog = this.dialog.open(ConfimDialogComponent, {
       data: {
         title: '确定删除吗？'
       }
     });
     openDialog.afterClosed().subscribe(result => {
-      console.log(result)
+      if (result.reData) {
+        this.service$.delete(item)
+          .subscribe(
+            res => {
+              this.projects = this.projects.filter(item => res.id != item.id);
+            })
+      }
       this.chan.markForCheck();
     })
   }

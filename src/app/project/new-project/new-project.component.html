@@ -1,15 +1,18 @@
-<form>
-  <h2 md-dialog-title>{{title}}</h2>
+<form [formGroup]="form">
+  <h2 md-dialog-title>{{titles}}</h2>
   <div md-dialog-content>
-    <md-input-container  class="full-width">
-      <input mdInput type="text" placeholder="项目名称">
+    <md-input-container class="full-width">
+      <input mdInput type="text" placeholder="项目名称" formControlName="name">
     </md-input-container>
-    <md-input-container  class="full-width">
-      <input mdInput type="text" placeholder="项目描述">
+    <md-input-container class="full-width">
+      <input mdInput type="text" placeholder="项目描述" formControlName="desc">
     </md-input-container>
+    <app-image-list [items]="items" [title]="title" [cols]="cols" [useSvgIcon]="useSvgIcon"
+     (changeImage)="ischangeImage($event)"
+      formControlName="coverImage"></app-image-list>
   </div>
   <div md-dialog-actions>
-    <button md-raised-button type="button" color="primary" (click)="save('save')">保存</button>
+    <button md-raised-button type="button" color="primary" (click)="save('save')" [disabled]="!form.valid">保存</button>
     <button md-button (click)="save()" type="button">关闭</button>
   </div>
 </form>

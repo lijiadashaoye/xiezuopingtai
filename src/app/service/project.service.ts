@@ -31,7 +31,7 @@ export class ProjectService {
     }
 
     delete(project: Project): Observable<Project> {
-        let delTasks$ = Observable.from(project.taskLists)
+        let delTasks$ = Observable.from(project.taskLists?project.taskLists:[])
             .mergeMap(listId => this.http.delete(`${this.baseUrl.baseUrl}/taskLists/${listId}`))
             .count();
         return delTasks$.switchMap(_ => this.http.delete(`${this.baseUrl.baseUrl}/${this.domain}/${project.id}`))

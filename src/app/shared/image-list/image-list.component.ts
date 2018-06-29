@@ -28,10 +28,14 @@ export class ImageListComponent implements ControlValueAccessor {
   selected = null;
   toggleTitle = '使用图片';
   constructor() { }
-
-  onChage(index) {
+  ngOnInit(): void {
+    if (!this.useSvgIcon) {
+      this.onChange({ checked: !this.useSvgIcon })
+    }
+  }
+  onChoose(index) {
     this.selected = this.items[index];
-    this.propagateChange(this.selected)  // 参数即为向外发送的值，用来作为form表单数据
+    this.propagateChange(index)  // 参数即为向外发送的值，用来作为form表单数据
   }
   writeValue(obj: any): void {
     this.selected = obj;
@@ -42,12 +46,11 @@ export class ImageListComponent implements ControlValueAccessor {
   };
 
   registerOnTouched(fn: any): void { };
-  
+
   validate(c: FormControl) {
     return this.selected ? null : { key: '表单组建验证错误' }
   }
   onChange(e) {
-    this.selected = null;
     this.selected = null;
     this.changeImage.emit(e);
     e.checked ? this.toggleTitle = '使用图标' : this.toggleTitle = '使用图片';

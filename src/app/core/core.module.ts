@@ -44,6 +44,11 @@ import 'rxjs/observable/from'
 import 'rxjs/operator/mergeMap'
 import 'rxjs/operator/count'
 import 'rxjs/operator/switchMap'
+import 'rxjs/operator/concat'
+import 'rxjs/operator/reduce'
+import 'rxjs/operator/mergeMap'
+import 'rxjs/operator/take'
+
 @NgModule({
   imports: [
     SharedModule,

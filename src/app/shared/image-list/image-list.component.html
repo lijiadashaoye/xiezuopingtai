@@ -10,7 +10,7 @@
 <div class="scroll-container">
   <md-grid-list [cols]="cols" rowHeight="60px">
     <md-grid-tile *ngFor="let item of items;let i=index">
-      <div class="image-container" (click)="onChage(i)">
+      <div class="image-container" (click)="onChoose(i)">
         <md-icon [svgIcon]="item" class="radiu" *ngIf="useSvgIcon else imgItem" style="margin:3px;"></md-icon>
         <ng-template #imgItem>
           <img [src]="item" alt="image selected">
@@ -26,5 +26,5 @@
   </md-grid-list>
 </div>
 <div>
-  <md-slide-toggle (change)="onChange($event)">{{toggleTitle}}</md-slide-toggle>
+  <md-slide-toggle [checked]="!useSvgIcon" (change)="onChange($event)">{{toggleTitle}}</md-slide-toggle>
 </div>

@@ -10,8 +10,10 @@
     height:100%;
 }
 .card{
-    flex: 0 0 350px;
+    height:370px;
+    flex: 0 0 370px;
     margin:10px;
+    display:flex;
 }
 .fab-button{
     position: fixed;
