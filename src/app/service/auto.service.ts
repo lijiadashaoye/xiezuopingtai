@@ -4,7 +4,7 @@ import { User } from '../domain'
 import { Observable } from 'rxjs';
 import { Project } from '../domain'
 @Injectable()
-export class UserService {
+export class AuthService {
     private readonly domain = 'user';
     private headers = new Headers({
         'Content-type': 'application/json'
