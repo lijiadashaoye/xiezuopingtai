@@ -25,8 +25,12 @@ import {
 import {
   staggerAnims
 } from '../../anims/list.anim';
-import { ProjectService } from '../../service/project.service';
-import { Subscription } from 'rxjs'
+import {
+  ProjectService
+} from '../../service/project.service';
+import {
+  Subscription
+} from 'rxjs'
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
@@ -43,7 +47,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
     private dialog: MdDialog,
     private chan: ChangeDetectorRef,
     private service$: ProjectService,
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.sub = this.service$.get('').subscribe(
@@ -88,7 +92,9 @@ export class ProjectListComponent implements OnInit, OnDestroy {
           this.service$.update(result.reData).subscribe(res => {
             let kk = this.projects.filter(item => res.id == item.id)[0];
             let index = this.projects.indexOf(kk)
-            this.projects[index] = { ...this.projects[index], ...res }
+            this.projects[index] = { ...this.projects[index],
+              ...res
+            }
           })
         }
         this.chan.markForCheck()
@@ -112,9 +118,9 @@ export class ProjectListComponent implements OnInit, OnDestroy {
           .subscribe(
             res => {
               this.projects = this.projects.filter(item => res.id != item.id);
+              this.chan.markForCheck();
             })
       }
-      this.chan.markForCheck();
     })
   }
 
