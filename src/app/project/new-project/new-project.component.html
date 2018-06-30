@@ -9,7 +9,7 @@
     </md-input-container>
     <app-image-list [items]="items" [title]="title" [cols]="cols" [useSvgIcon]="useSvgIcon"
      (changeImage)="ischangeImage($event)"
-      formControlName="coverImage"></app-image-list>
+     formControlName="coverImage"></app-image-list>
   </div>
   <div md-dialog-actions>
     <button md-raised-button type="button" color="primary" (click)="save('save')" [disabled]="!form.valid">保存</button>

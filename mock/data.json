@@ -1,70 +1,42 @@
 {
+  "users": [
+    {
+      "id": "0",
+      "email": "lisi@sina.cn",
+      "password": "123",
+      "name": "李四",
+      "avatar": "avatar:svg-8",
+      "projectIds": [
+        "1"
+      ]
+    },
+    {
+      "id": "2",
+      "email": "liming@sina.cn",
+      "password": "123",
+      "name": "李明",
+      "avatar": "avatar:svg-4",
+      "projectIds": [
+        "1"
+      ]
+    },
+    {
+      "id": "3",
+      "email": "wangwang@sina.cn",
+      "password": "123",
+      "name": "旺旺",
+      "avatar": "avatar:svg-3",
+      "projectIds": [
+        "2"
+      ]
+    }
+  ],
   "projects": [
     {
       "id": "1",
       "name": "企业协作平台",
       "desc": "这是一个企业内部项目",
       "coverImg": "assets/img/covers/5.jpg",
-      "members": [
-        "1",
-        "2"
-      ]
-    },
-    {
-      "name": "3423423",
-      "desc": "234234234234",
-      "coverImg": "assets/img/covers/1.jpg",
-      "id": "yFsRh4d",
-      "members": [
-        "1",
-        "2"
-      ]
-    },
-    {
-      "name": "asdf",
-      "desc": "asdf",
-      "coverImg": "avatar:svg-8",
-      "id": "MC6NS1_",
-      "members": [
-        "1",
-        "2"
-      ]
-    },
-    {
-      "name": "sdfg",
-      "desc": "sdfg",
-      "coverImg": "assets/img/covers/11.jpg",
-      "id": "G5iopms",
-      "members": [
-        "1",
-        "2"
-      ]
-    },
-    {
-      "name": "asdf",
-      "desc": "",
-      "coverImg": "assets/img/covers/13.jpg",
-      "id": "AQpfkS8",
-      "members": [
-        "1",
-        "2"
-      ]
-    },
-    {
-      "name": "asdf",
-      "desc": "asdf",
-      "coverImg": "assets/img/covers/7.jpg",
-      "id": "oRuV5ca",
-      "members": [
-        "1",
-        "2"
-      ]
-    },
-    {
-      "name": "adswerwer",
-      "desc": "sdf",
-      "coverImg": "assets/img/covers/10.jpg",
-      "id": "K7O4zLf",
       "members": [
         "1",
         "2"
@@ -81,6 +53,8 @@
       ]
     }
   ],
+  "taskLists": [],
+  "tasks": [],
   "quotes": [
     {
       "id": "0",

@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   title = '请选择';
   cols = 6;
   useSvgIcon = true;
-
+  selectedTab = 0;
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -55,5 +55,9 @@ export class RegisterComponent implements OnInit {
   historyBack(e: Event) {
     e.stopPropagation()
     history.back()
+  }
+
+  onTabChange(index) {
+    this.selectedTab = index;
   }
 }

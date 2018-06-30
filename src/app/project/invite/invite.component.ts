@@ -1,5 +1,15 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
+import {
+  Component,
+  OnInit,
+  Inject
+} from '@angular/core';
+import {
+  MD_DIALOG_DATA,
+  MdDialogRef
+} from '@angular/material';
+import {
+  User
+} from '../../domain/user.model'
 
 @Component({
   selector: 'app-invite',
@@ -7,30 +17,21 @@ import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
   styleUrls: ['./invite.component.scss']
 })
 export class InviteComponent implements OnInit {
-  items = [
-    {
-      id: 1,
-      name: 'one'
-    },
-    {
-      id: 2,
-      name: 'two'
-    },
-    {
-      id: 3,
-      name: 'three'
-    },
-  ]
+  members: User[] = [];
   constructor(
     @Inject(MD_DIALOG_DATA) private dialogdata,
-    private dialogref: MdDialogRef<InviteComponent>
-  ) { }
+    private dialogref: MdDialogRef < InviteComponent >
+  ) {}
 
-  ngOnInit() {}
-  save(which) {
-    which?this.dialogref.close({ reData: 'invite' }):this.dialogref.close()
+  ngOnInit() {
+    this.members = [...this.dialogdata.members];
   }
-  displayUser(user: { id: string; name: string }) {
-    return user?user.name:''
+  save(which, ev) {
+    ev.preventDefault();
+    if (this.members.length > 0) {
+      which == 'save' ? this.dialogref.close({
+        reData: this.members
+      }) : this.dialogref.close()
+    }
   }
 }

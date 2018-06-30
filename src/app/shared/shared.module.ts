@@ -23,6 +23,8 @@ import {
   MdNativeDateModule,
   MdSelectModule,
   MdButtonToggleModule,
+  MdChipsModule,
+  MdTabsModule
 } from '@angular/material';
 import {
   ConfimDialogComponent
@@ -33,7 +35,8 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageListComponent } from './image-list/image-list.component';
 import { ServiceModule } from '../service/service.module';
-import { AgeInputComponent } from './age-input/age-input.component'
+import { AgeInputComponent } from './age-input/age-input.component';
+import { ChipsListComponent } from './chips-list/chips-list.component'
 @NgModule({
   imports: [
     CommonModule,
@@ -59,6 +62,8 @@ import { AgeInputComponent } from './age-input/age-input.component'
     ReactiveFormsModule,
     ServiceModule.forRoot(),
     MdButtonToggleModule,
+    MdChipsModule,
+    MdTabsModule
   ],
   exports: [
     CommonModule,
@@ -84,11 +89,15 @@ import { AgeInputComponent } from './age-input/age-input.component'
     ImageListComponent,
     AgeInputComponent,
     MdButtonToggleModule,
+    MdChipsModule,
+    ChipsListComponent,
+    MdTabsModule
   ],
   declarations: [
     ConfimDialogComponent,
     ImageListComponent,
-    AgeInputComponent
+    AgeInputComponent,
+    ChipsListComponent
   ],
   entryComponents: [
     ConfimDialogComponent

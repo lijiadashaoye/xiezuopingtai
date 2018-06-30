@@ -101,7 +101,11 @@ export class ProjectListComponent implements OnInit, OnDestroy {
       })
   }
   toInvite() {
-    let openDialog = this.dialog.open(InviteComponent);
+    let openDialog = this.dialog.open(InviteComponent, {
+      data: {
+        members: []
+      }
+    });
     openDialog.afterClosed().subscribe(result => {
       console.log(result)
     })

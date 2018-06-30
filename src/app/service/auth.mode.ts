@@ -4,5 +4,5 @@ export interface Auth {
     user?: User;
     userId?: string;
     token?: string;
-    err: Err
+    err?: Err
 }
