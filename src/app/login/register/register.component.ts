@@ -1,8 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  Observable,
+  Subscription
+} from 'rxjs';
 import 'rxjs/observable/range';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-
+import {
+  FormGroup,
+  Validators,
+  FormBuilder
+} from '@angular/forms';
+import {
+  isValidDate
+} from '../../utils/date.util';
+import {
+  extractInfo,
+  isValidAddr,
+  getAddrByCode
+} from '../../utils/identity.util';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,7 +33,8 @@ export class RegisterComponent implements OnInit {
   cols = 6;
   useSvgIcon = true;
   selectedTab = 0;
-  constructor(private fb: FormBuilder) { }
+  sub: Subscription
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -24,14 +42,32 @@ export class RegisterComponent implements OnInit {
       password: ['', Validators.required],
       name: ['', Validators.required],
       surePassword: ['', Validators.required],
-      avater: '',
-      dateOfBirth: ['1990-10-2']
+      avater: [''],
+      dateOfBirth: ['1990-10-2'],
+      identity: '',
+      address:''
     })
     Observable.range(1, 16).subscribe(val => {
       this.items.push(`avatar:svg-${val}`)
     })
-  }
+    let id$ = this.form.get('identity').valueChanges
+      .debounceTime(400)
+      .filter(_ => this.form.get('identity').valid);
+    this.sub = id$.subscribe(id => {
+      let info = extractInfo(id.identityNo);
 
+      if (isValidAddr(info.addrCode)) {
+        let addr = getAddrByCode(info.addrCode);
+        this.form.get('address').patchValue(addr)
+      }
+      if (isValidDate(info.dateOfBirth)) {
+        this.form.get('dateOfBirth').patchValue(info.dateOfBirth)
+      }
+    })
+  }
+  ngOnDestroy(): void {
+    this.sub.unsubscribe()
+  }
   ischangeImage(e) {
     this.items = [];
     if (e.checked == true) {

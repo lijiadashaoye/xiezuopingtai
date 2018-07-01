@@ -38,7 +38,8 @@ import { ServiceModule } from '../service/service.module';
 import { AgeInputComponent } from './age-input/age-input.component';
 import { ChipsListComponent } from './chips-list/chips-list.component';
 import { IdentityInputComponent } from './identity-input/identity-input.component';
-import { AreaListComponent } from './area-list/area-list.component'
+import { AreaListComponent } from './area-list/area-list.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -85,15 +86,19 @@ import { AreaListComponent } from './area-list/area-list.component'
     MdDatepickerModule,
     MdNativeDateModule,
     MdSelectModule,
+    MdButtonToggleModule,
+    MdChipsModule,
+    MdTabsModule,
+
     DirectiveModule,
     FormsModule,
     ReactiveFormsModule,
+
     ImageListComponent,
     AgeInputComponent,
-    MdButtonToggleModule,
-    MdChipsModule,
-    ChipsListComponent,
-    MdTabsModule
+    ChipsListComponent, 
+    IdentityInputComponent,
+    AreaListComponent
   ],
   declarations: [
     ConfimDialogComponent,

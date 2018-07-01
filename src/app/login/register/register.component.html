@@ -23,7 +23,18 @@
 
       </md-tab>
       <md-tab label="个人信息">
-        <app-age-input formControlName="dateOfBirth"></app-age-input>
+        <div class="full-width">
+
+          <app-identity-input formControlName="identity"></app-identity-input>
+        </div>
+
+        <div class="full-width">
+          <app-age-input formControlName="dateOfBirth"></app-age-input>
+        </div>
+
+        <div class="full-width">
+          <app-area-list formControlName="address"></app-area-list>
+        </div>
       </md-tab>
     </md-tab-group>
   </md-card>

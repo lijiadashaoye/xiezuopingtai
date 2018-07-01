@@ -1,3 +1,22 @@
-<p>
-  area-list works!
-</p>
+<div class="address-group">
+  <div>
+    <md-select placeholder="请输入省份" [(ngModel)]="_address.province" (change)="onProvinceChange()">
+      <md-option *ngFor="let p of province$|async" [value]="p">{{p}}</md-option>
+    </md-select>
+  </div>
+  <div>
+    <md-select placeholder="请输入城市" [(ngModel)]="_address.city" (change)="onCityChange()">
+      <md-option *ngFor="let c of cities$|async" [value]="c">{{c}}</md-option>
+    </md-select>
+  </div>
+  <div>
+    <md-select placeholder="请输入区县" [(ngModel)]="_address.district" (change)="onDistrictChange()">
+      <md-option *ngFor="let ids of district$|async" [value]="ids">{{ids}}</md-option>
+    </md-select>
+  </div>
+  <div class="street">
+    <md-input-container class="full-width">
+      <input mdInput type="text" placeholder="请输入街道地址" [(ngModel)]="_address.street" (change)="onStreetChange()">
+    </md-input-container>
+  </div>
+</div>
