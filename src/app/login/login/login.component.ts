@@ -29,6 +29,7 @@ import {
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  wrong = false;
   form: FormGroup;
   quote: Quote = {
     "cn": "想有发现就要实验，这项实验需要时间。—《神盾局特工》",
@@ -61,6 +62,9 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem('persion', val[0].id);
             this.router.navigate(['project']);
           })
+        } else {
+          this.wrong = true;
+          setTimeout(() => this.wrong = false, 3000)
         }
       })
     }

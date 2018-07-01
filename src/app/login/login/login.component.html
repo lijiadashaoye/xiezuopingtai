@@ -20,6 +20,9 @@
       <p>忘记密码？
         <a href="" routerLink="register">找回</a>
       </p>
+      <p style="color:red;text-align: left;font-size:20px;" *ngIf="wrong">
+        用户名或密码不对！
+      </p>
     </md-card-actions>
   </md-card>
 
