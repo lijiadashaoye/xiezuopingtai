@@ -36,7 +36,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageListComponent } from './image-list/image-list.component';
 import { ServiceModule } from '../service/service.module';
 import { AgeInputComponent } from './age-input/age-input.component';
-import { ChipsListComponent } from './chips-list/chips-list.component'
+import { ChipsListComponent } from './chips-list/chips-list.component';
+import { IdentityInputComponent } from './identity-input/identity-input.component';
+import { AreaListComponent } from './area-list/area-list.component'
 @NgModule({
   imports: [
     CommonModule,
@@ -97,7 +99,9 @@ import { ChipsListComponent } from './chips-list/chips-list.component'
     ConfimDialogComponent,
     ImageListComponent,
     AgeInputComponent,
-    ChipsListComponent
+    ChipsListComponent,
+    IdentityInputComponent,
+    AreaListComponent
   ],
   entryComponents: [
     ConfimDialogComponent

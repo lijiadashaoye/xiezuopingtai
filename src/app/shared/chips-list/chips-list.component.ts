@@ -56,7 +56,7 @@ export class ChipsListComponent implements ControlValueAccessor {
 
   ngOnInit() {
     this.form = this.fb.group({
-      memberSearch: ['sdf']
+      memberSearch: ['']
     })
     this.memberResults$ = this.form.get('memberSearch').valueChanges
       .debounceTime(400)
@@ -77,7 +77,8 @@ export class ChipsListComponent implements ControlValueAccessor {
     }
   };
   registerOnChange(fn: any): void {
-    this.propagateChange = fn
+    this.propagateChange = fn;
+    console.log(fn)
   };
   registerOnTouched(fn: any): void {
 

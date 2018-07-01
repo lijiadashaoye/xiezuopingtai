@@ -16,8 +16,6 @@
           <input mdInput type="text" placeholder="重复输入您的密码" formControlName="surePassword">
         </md-input-container>
 
-        <app-age-input formControlName="dateOfBirth"></app-age-input>
-
         <app-image-list [items]="items" [title]="title" [cols]="cols" [useSvgIcon]="useSvgIcon" (changeImage)="ischangeImage($event)"
           formControlName="avater"></app-image-list>
         <button md-raised-button type="submit" color="primary">注册</button>
@@ -25,7 +23,7 @@
 
       </md-tab>
       <md-tab label="个人信息">
-        wertwert
+        <app-age-input formControlName="dateOfBirth"></app-age-input>
       </md-tab>
     </md-tab-group>
   </md-card>
