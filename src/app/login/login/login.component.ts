@@ -1,9 +1,28 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
-import { QuoteService } from '../../service/quote.service'
-import { Quote } from '../../domain/quote.model';
+import {
+  Component,
+  OnInit,
+  Inject
+} from '@angular/core';
+import {
+  Router
+} from '@angular/router';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  FormBuilder
+} from '@angular/forms'
+import {
+  QuoteService
+} from '../../service/quote.service'
+import {
+  Quote
+} from '../../domain/quote.model';
 import 'rxjs/observable/from'
+import {
+  UserService
+} from '../../service/user.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,11 +38,12 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private quoteService$: QuoteService
-  ) { }
+    private quoteService$: QuoteService,
+    private service: UserService,
+  ) {}
 
   ngOnInit() {
-    this.form = this.fb.group({                           // 直接指定验证函数
+    this.form = this.fb.group({ // 直接指定验证函数
       email: ['', Validators.compose([Validators.required, this.validates])],
       password: ['', Validators.required]
     })
@@ -34,15 +54,25 @@ export class LoginComponent implements OnInit {
   }
   login() {
     if (this.form.valid) {
-      this.router.navigate(['project'])
+      this.service.searchUsers(this.form.get('email').value).subscribe(res => {
+        let user = res.filter(item => item.password == this.form.get('password').value);
+        if (user.length > 0) {
+          this.service.getPersion(user[0].id).subscribe(val => {
+            sessionStorage.setItem('persion', val[0].id);
+            this.router.navigate(['project']);
+          })
+        }
+      })
     }
     // this.form.controls['email'].setValidators(this.validates);  // 动态指定验证函数
   }
-  validates(c: FormControl) {  // 自定义验证函数
+  validates(c: FormControl) { // 自定义验证函数
     if (c.value) {
       return null
     } else {
-      return { key: 'ksdflkasjdflk' }
+      return {
+        key: 'ksdflkasjdflk'
+      }
     }
   }
 }

@@ -78,7 +78,6 @@ export class ChipsListComponent implements ControlValueAccessor {
   };
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
-    console.log(fn)
   };
   registerOnTouched(fn: any): void {
 

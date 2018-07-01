@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+<form [formGroup]="form">
   <md-card>
     <md-tab-group [dynamicHeight]="true" [selectedIndex]="selectedTab" (selectChange)="onTabChange($event.index)">
       <md-tab label="帐号信息">
@@ -18,9 +18,8 @@
 
         <app-image-list [items]="items" [title]="title" [cols]="cols" [useSvgIcon]="useSvgIcon" (changeImage)="ischangeImage($event)"
           formControlName="avater"></app-image-list>
-        <button md-raised-button type="submit" color="primary">注册</button>
+        <button md-raised-button type="submit" (click)="save($event)" color="primary">保存</button>
         <button md-raised-button type="button" (click)="historyBack($event)">返回</button>
-
       </md-tab>
       <md-tab label="个人信息">
         <div class="full-width">
@@ -35,6 +34,7 @@
         <div class="full-width">
           <app-area-list formControlName="address"></app-area-list>
         </div>
+        <button md-raised-button type="button" (click)="selectedTabClick()">上一页</button>
       </md-tab>
     </md-tab-group>
   </md-card>

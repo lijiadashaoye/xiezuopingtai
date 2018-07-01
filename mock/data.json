@@ -1,6 +1,28 @@
 {
   "users": [
     {
+      "email": "lisi@sina.cn",
+      "name": "李四ffffg",
+      "avater": "avatar:svg-8",
+      "dateOfBirth": "1987-07-15",
+      "identity": {
+        "identityType": 0,
+        "identityNo": "110223198707152313"
+      },
+      "password": "1",
+      "surePassword": "1",
+      "address": {
+        "province": "北京市",
+        "city": "北京市",
+        "district": "北京市通州区",
+        "street": ""
+      },
+      "id": "4",
+      "projectIds": [
+        "1"
+      ]
+    },
+    {
       "id": "0",
       "email": "lisi@sina.cn",
       "password": "123",
