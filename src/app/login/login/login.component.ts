@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private quoteService$: QuoteService,
     private service: UserService,
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.form = this.fb.group({ // 直接指定验证函数
@@ -78,5 +78,8 @@ export class LoginComponent implements OnInit {
         key: 'ksdflkasjdflk'
       }
     }
+  }
+  toRegister(type) {
+    this.router.navigate(['login/register'], { queryParams: { type: type } })
   }
 }

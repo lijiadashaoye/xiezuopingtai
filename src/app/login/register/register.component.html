@@ -4,21 +4,22 @@
       <md-tab label="帐号信息">
 
         <md-input-container class="full-width">
-          <input mdInput type="text" placeholder="您的email" formControlName="email">
+          <input mdInput type="text" placeholder="您的email" formControlName="email" id="emaild">
         </md-input-container>
         <md-input-container class="full-width">
-          <input mdInput type="text" placeholder="您的姓名" formControlName="name">
+          <input mdInput type="text" placeholder="您的姓名" formControlName="name" id="named">
         </md-input-container>
         <md-input-container class="full-width">
           <input mdInput type="text" placeholder="密码" formControlName="password">
         </md-input-container>
         <md-input-container class="full-width">
-          <input mdInput type="text" placeholder="重复输入您的密码" formControlName="surePassword">
+          <input mdInput type="text" placeholder="重复输入您的密码" formControlName="surePassword" id="pass">
         </md-input-container>
 
         <app-image-list [items]="items" [title]="title" [cols]="cols" [useSvgIcon]="useSvgIcon" (changeImage)="ischangeImage($event)"
           formControlName="avater"></app-image-list>
-        <button md-raised-button type="submit" (click)="save($event)" color="primary">保存</button>
+        <button md-raised-button type="button" *ngIf="type=='regist'" (click)="save($event)" color="primary">保存</button>
+        <button md-raised-button type="button" *ngIf="type=='find'" (click)="getPassword($event)" color="primary">找回</button>
         <button md-raised-button type="button" (click)="historyBack($event)">返回</button>
       </md-tab>
       <md-tab label="个人信息">

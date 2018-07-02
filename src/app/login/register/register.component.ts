@@ -1,6 +1,9 @@
 import {
   Component,
   OnInit,
+  ElementRef,
+  Renderer2,
+  OnDestroy
 } from '@angular/core';
 import {
   Observable,
@@ -29,15 +32,20 @@ import {
 import {
   ConfimDialogComponent
 } from '../../shared/confim-dialog/confim-dialog.component';
+import {
+  ActivatedRoute
+} from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
   items = [];
   form: FormGroup;
   ids;
+  type;
+  findBackData;
 
   title = '请选择';
   cols = 6;
@@ -47,9 +55,16 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: UserService,
-    private dialog: MdDialog, ) {}
+    private dialog: MdDialog,
+    private route: ActivatedRoute,
+    private elem: ElementRef,
+    private rd: Renderer2
+  ) { }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(val => {
+      this.type = val.type;
+    })
     this.ids = sessionStorage.getItem('persion');
 
     this.form = this.fb.group({
@@ -96,9 +111,63 @@ export class RegisterComponent implements OnInit {
         })
       })
     }
+    if (this.type == 'find') {
+      this.form.get('name').valueChanges
+        .debounceTime(400)
+        .subscribe(val => {
+          let emails = this.form.get('email').touched;
+          if (emails) {
+            this.service.searchUsers(this.form.get('email').value)
+              .subscribe(vals => {
+                if (vals) {
+                  let nameData = this.form.get('name').value;
+                  let emailData = this.form.get('email').value;
+                  for (let i = 0; i < vals.length; i++) {
+                    if (vals[i].name == nameData && vals[i].email == emailData) {
+                      this.form.get('password').patchValue(vals[i].password);
+                      vals[i]['avater'] ? this.form.get('avater').patchValue(vals[i]['avater']) : '';
+                      let pass = this.elem.nativeElement.querySelector('#pass');
+                      this.rd.setStyle(pass, 'background', '#f7c3c3');
+                      this.findBackData = vals[i];
+
+                    }
+                  }
+                }
+              })
+          } else {
+            let emai = this.elem.nativeElement.querySelector('#emaild');
+            let nam = this.elem.nativeElement.querySelector('#named');
+            if (emai) {
+              this.rd.setStyle(emai, 'background', '#c48383');
+              this.rd.setStyle(nam, 'background', '#c48383');
+              setTimeout(() => {
+                this.rd.setStyle(emai, 'background', 'none');
+                this.rd.setStyle(nam, 'background', 'none');
+              }, 3000);
+            }
+
+          }
+        })
+      this.form.get('surePassword').valueChanges.subscribe(_ => {
+        let pass = this.elem.nativeElement.querySelector('#pass');
+        this.rd.setStyle(pass, 'background', 'none');
+      })
+    }
   }
   ngOnDestroy(): void {
-    this.sub.unsubscribe()
+    this.sub.unsubscribe();
+    this.form.patchValue({
+      email: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.required],
+      name: ['', Validators.required],
+      surePassword: ['', Validators.required],
+      avater: ['', Validators.required],
+      dateOfBirth: ['', Validators.required],
+      identity: ['', Validators.required],
+      address: ['', Validators.required],
+      id: ['']
+    })
+    sessionStorage.removeItem('persion');
   }
   ischangeImage(e) {
     this.items = [];
@@ -125,7 +194,7 @@ export class RegisterComponent implements OnInit {
       openDialog.afterClosed().subscribe(result => {
         if (result.reData) {
           this.save(ev);
-        }else{
+        } else {
           history.back()
         }
       })
@@ -192,5 +261,35 @@ export class RegisterComponent implements OnInit {
   }
   selectedTabClick() {
     this.selectedTab = 0
+  }
+  getPassword(ev: Event) {
+    ev.preventDefault();
+    ev.stopPropagation();
+
+    let password = this.form.get('password').value;
+    let surePassword = this.form.get('surePassword').value;
+
+    if (password == surePassword) {
+      this.service.setPersion(this.findBackData).subscribe(val => {
+        if (val == true) {
+          let openDialog = this.dialog.open(ConfimDialogComponent, {
+            data: {
+              title: '成功找回，请登录！',
+              which: true
+            }
+          });
+          openDialog.afterClosed().subscribe(result => {
+            history.back()
+          })
+        }
+      })
+    } else {
+      this.dialog.open(ConfimDialogComponent, {
+        data: {
+          title: '两次密码输入不相同，请重新输入!',
+          which: true
+        }
+      });
+    }
   }
 }

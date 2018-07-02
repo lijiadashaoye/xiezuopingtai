@@ -15,12 +15,12 @@
     </md-card-content>
     <md-card-actions class="text-right">
       <p>还没有账户吗？
-        <a href="" routerLink="register">注册</a>
+        <a href="javascript:;" (click)="toRegister('regist')">注册</a>
       </p>
       <p>忘记密码？
-        <a href="" routerLink="register">找回</a>
+        <a href="javascript:;" (click)="toRegister('find')">找回</a>
       </p>
-      <p style="color:red;text-align: left;font-size:20px;" *ngIf="wrong">
+      <p style="color:red;text-align: left;font-size:20px;margin:0;" *ngIf="wrong">
         用户名或密码不对！
       </p>
     </md-card-actions>
