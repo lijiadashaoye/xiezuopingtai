@@ -13,15 +13,13 @@ export const initialState: State = {
 };
 
 export function reducer(state = initialState, action: { type: string, payload: any }): State {
-    console.log(action)
     switch (action.type) {
         case quoteAction.QUOTE_SUCCESS: {
             return { ...state, quote: action.payload };
-        }
+        };
         case quoteAction.QUOTE_FAIL: {
             return state
-        }
-
+        };
         default: {
             return state;
         }
