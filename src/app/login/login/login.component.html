@@ -29,12 +29,12 @@
   <md-card>
     <md-card-header>
       <md-card-title>每日佳句</md-card-title>
-      <md-card-subtitle>{{quote.cn}}</md-card-subtitle>
+      <md-card-subtitle>{{(quote$ |async).cn}}</md-card-subtitle>
     </md-card-header>
-    <img md-card-image [src]="quote.pic">
+    <img md-card-image [src]="(quote$ |async).pic">
     <md-card-content>
       <span>
-        {{quote.en}}
+        {{(quote$ |async).en}}
       </span>
     </md-card-content>
   </md-card>

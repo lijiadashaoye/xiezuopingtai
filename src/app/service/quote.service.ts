@@ -11,7 +11,7 @@ export class QuoteService {
   ) { }
   getQuote(): Observable<Quote> {
     let num = Math.floor(Math.random() * 10)
-    let url = `${this.baseUrl.baseUrl}/quotes/${num}`
+    let url = `${this.baseUrl.baseUrl}/quotes/${num}`;
     return this.http.get(url).map(res => res.json() as Quote)
   }
 }

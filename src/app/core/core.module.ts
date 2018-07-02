@@ -49,12 +49,15 @@ import 'rxjs/operator/reduce'
 import 'rxjs/operator/mergeMap'
 import 'rxjs/operator/take'
 
+import {AppStoreModule} from '../reducers'
+
 @NgModule({
   imports: [
     SharedModule,
     HttpClientModule,
     HttpModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppStoreModule
   ],
   declarations: [
     HeaderComponent,

@@ -22,6 +22,10 @@ import 'rxjs/observable/from'
 import {
   UserService
 } from '../../service/user.service';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../reducers';
+import * as actions from '../../actions/quote.action'
 
 @Component({
   selector: 'app-login',
@@ -31,16 +35,14 @@ import {
 export class LoginComponent implements OnInit {
   wrong = false;
   form: FormGroup;
-  quote: Quote = {
-    "cn": "想有发现就要实验，这项实验需要时间。—《神盾局特工》",
-    "en": "Discovery requires experimentation, and this experiment will take time.",
-    "pic": "/assets/img/quotes/3.jpg"
-  }
+  quote$: Observable<Quote>;
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private quoteService$: QuoteService,
     private service: UserService,
+    private store$: Store<fromRoot.State>
   ) { }
 
   ngOnInit() {
@@ -48,9 +50,10 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.compose([Validators.required, this.validates])],
       password: ['', Validators.required]
     })
-
+    this.quote$ = this.store$.select(state => state.quote.quote);
+    
     this.quoteService$.getQuote().subscribe(val => {
-      this.quote = val;
+      this.store$.dispatch({ type: actions.QUOTE_SUCCESS, payload: val })
     })
   }
   login() {
