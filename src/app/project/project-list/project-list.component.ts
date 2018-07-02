@@ -129,3 +129,4 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   }
 
 }
+// cnpm i --save @ngrx/core@1.2.0 @ngrx/store@2.2.3 @ngrx/router-store@1.2.6 @ngrx/effects@2.0.4 @ngrx/store-devtools@3.2.4
