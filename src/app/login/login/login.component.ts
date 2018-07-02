@@ -50,11 +50,13 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.compose([Validators.required, this.validates])],
       password: ['', Validators.required]
     })
+
     this.quote$ = this.store$.select(state => state.quote.quote);
-    
+
     this.quoteService$.getQuote().subscribe(val => {
       this.store$.dispatch({ type: actions.QUOTE_SUCCESS, payload: val })
     })
+    
   }
   login() {
     if (this.form.valid) {
