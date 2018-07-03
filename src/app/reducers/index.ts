@@ -24,7 +24,7 @@ const reducers = {   // reducer字典
 const productionReducers: ActionReducer<State> = combineReducers(reducers);
 const developmentReducers: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
 
-export function reducer(state = initialState, action: any): State {
+export function reducerAll(state = initialState, action: any): State {   // 全局总括的reducer
     if (environment.production) {
         return productionReducers(state, action)
     } else {
@@ -35,7 +35,7 @@ export function reducer(state = initialState, action: any): State {
 
 @NgModule({
     imports: [
-        StoreModule.provideStore(reducer),
+        StoreModule.provideStore(reducerAll),
         RouterStoreModule.connectRouter(),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
     ],

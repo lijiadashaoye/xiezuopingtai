@@ -23,6 +23,7 @@ import {
   UserService
 } from '../../service/user.service';
 import { Observable } from 'rxjs';
+
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
 import * as actions from '../../actions/quote.action'
