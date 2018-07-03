@@ -26,7 +26,7 @@ import { Observable } from 'rxjs';
 
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
-import * as actions from '../../actions/quote.action'
+import * as actions from '../../actions/quote.action';
 
 @Component({
   selector: 'app-login',
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
     this.quoteService$.getQuote().subscribe(val => {
       this.store$.dispatch({ type: actions.QUOTE_SUCCESS, payload: val })
     })
-    
+
   }
   login() {
     if (this.form.valid) {

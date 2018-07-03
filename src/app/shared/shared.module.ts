@@ -66,7 +66,9 @@ import { AreaListComponent } from './area-list/area-list.component';
     ServiceModule.forRoot(),
     MdButtonToggleModule,
     MdChipsModule,
-    MdTabsModule
+    MdTabsModule,
+
+    
   ],
   exports: [
     CommonModule,
