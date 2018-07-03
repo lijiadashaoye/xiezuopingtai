@@ -1,6 +1,8 @@
 import { MdIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser'
 
+
+// material独有的方法
 export const loadSvgResources = (ir: MdIconRegistry, ds: DomSanitizer) => {
     let imgDir = 'assets/img';
     let sidebarDir = `${imgDir}/sidebar`;
