@@ -7,7 +7,8 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import * as fromQuote from './quote.reducer';
 
 import { compose } from '@ngrx/core/compose';
-import { environment } from '../../environments/environment'
+import { environment } from '../../environments/environment';
+import { createSelector } from 'reselect'
 
 export interface State {  // 用来总括所有的state
     quote: fromQuote.State
@@ -30,8 +31,10 @@ export function reducerAll(state = initialState, action: any): State {   // 全�
     } else {
         return developmentReducers(state, action)
     }
-
 }
+
+export const getQuoteState = (state: State) => state.quote;
+export const getQuote = createSelector(getQuoteState, fromQuote.getQuote);
 
 @NgModule({
     imports: [

@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private quoteService$: QuoteService,
     private service: UserService,
     private store$: Store<fromRoot.State>
   ) { }
@@ -52,12 +51,8 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     })
 
-    this.quote$ = this.store$.select(state => state.quote.quote);
-
-    this.quoteService$.getQuote().subscribe(val => {
-      this.store$.dispatch({ type: actions.QUOTE_SUCCESS, payload: val })
-    })
-
+    this.quote$ = this.store$.select(fromRoot.getQuote);
+    this.store$.dispatch(new actions.LoadAction(null))
   }
   login() {
     if (this.form.valid) {

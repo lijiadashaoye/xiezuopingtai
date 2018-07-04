@@ -49,7 +49,8 @@ import 'rxjs/operator/reduce'
 import 'rxjs/operator/mergeMap'
 import 'rxjs/operator/take'
 
-import {AppStoreModule} from '../reducers'
+import { AppStoreModule } from '../reducers';
+import { AppEffectsModule } from '../effects'
 
 @NgModule({
   imports: [
@@ -57,7 +58,8 @@ import {AppStoreModule} from '../reducers'
     HttpClientModule,
     HttpModule,
     BrowserAnimationsModule,
-    AppStoreModule
+    AppStoreModule,
+    AppEffectsModule
   ],
   declarations: [
     HeaderComponent,
