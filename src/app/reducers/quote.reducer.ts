@@ -1,5 +1,6 @@
 import * as quoteAction from '../actions/quote.action';
-import { Quote } from '../domain/quote.model'
+import { Quote } from '../domain/quote.model';
+
 export interface State {
     quote: Quote;
 };

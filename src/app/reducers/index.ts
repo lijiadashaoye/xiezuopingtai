@@ -7,7 +7,7 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import * as fromQuote from './quote.reducer';
 
 import { compose } from '@ngrx/core/compose';
-import { environment } from '../../environments/environment'
+import { environment } from '../../environments/environment';
 
 export interface State {  // 用来总括所有的state
     quote: fromQuote.State
@@ -38,6 +38,7 @@ export function reducerAll(state = initialState, action: any): State {   // 全�
         StoreModule.provideStore(reducerAll),
         RouterStoreModule.connectRouter(),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
+
     ],
 })
 export class AppStoreModule { }
