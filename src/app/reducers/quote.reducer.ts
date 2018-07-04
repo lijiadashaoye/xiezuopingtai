@@ -1,5 +1,9 @@
 import * as quoteAction from '../actions/quote.action';
 import { Quote } from '../domain/quote.model';
+<<<<<<< HEAD
+=======
+import * as actions from '../actions/quote.action';
+>>>>>>> df30aeae9072f55027fb9cff10a0f3c3966575b5
 
 export interface State {
     quote: Quote;
@@ -13,12 +17,12 @@ export const initialState: State = {
     }
 };
 
-export function reducer(state = initialState, action: { type: string, payload: any }): State {
+export function reducer(state = initialState, action: actions.Actions): State {
     switch (action.type) {
-        case quoteAction.QUOTE_SUCCESS: {
-            return { ...state, quote: action.payload };
+        case actions.ActionTypes.LOAD_SUCCESS: {
+            return { ...state, quote: <Quote>action.payload };
         };
-        case quoteAction.QUOTE_FAIL: {
+        case actions.ActionTypes.LOAD_FAIL: {
             return state
         };
         default: {
@@ -26,3 +30,4 @@ export function reducer(state = initialState, action: { type: string, payload: a
         }
     }
 }
+export const getQuote = (state: State) => state.quote;
