@@ -1,9 +1,6 @@
 import * as quoteAction from '../actions/quote.action';
 import { Quote } from '../domain/quote.model';
-<<<<<<< HEAD
-=======
 import * as actions from '../actions/quote.action';
->>>>>>> df30aeae9072f55027fb9cff10a0f3c3966575b5
 
 export interface State {
     quote: Quote;
