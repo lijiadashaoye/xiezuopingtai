@@ -35,6 +35,11 @@ import {
 import {
   ActivatedRoute
 } from '@angular/router';
+
+import * as authAction from '../../actions/auth.action'
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../reducers';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -58,7 +63,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private dialog: MdDialog,
     private route: ActivatedRoute,
     private elem: ElementRef,
-    private rd: Renderer2
+    private rd: Renderer2,
+    private store$: Store<fromRoot.State>
   ) { }
 
   ngOnInit() {
@@ -226,6 +232,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
       return
     }
     if (this.ids) {
+      this.store$.dispatch(new authAction.RegesterAction(this.form.value))
+
+
       this.service.setPersion(this.form.value).subscribe(val => {
         if (val == true) {
           let openDialog = this.dialog.open(ConfimDialogComponent, {
@@ -239,7 +248,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
           })
         }
       })
+
+
+
     } else {
+
+
       this.service.addPersion(this.form.value).subscribe(val => {
         if (val == true) {
           let openDialog = this.dialog.open(ConfimDialogComponent, {
@@ -253,6 +267,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
           })
         }
       })
+
+
     }
   }
 

@@ -5,21 +5,26 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
 
 import * as fromQuote from './quote.reducer';
+import * as fromAuth from './auth.reducer';
 
 import { compose } from '@ngrx/core/compose';
 import { environment } from '../../environments/environment';
-import { createSelector } from 'reselect'
+import { createSelector } from 'reselect';
+import { Auth } from '../domain'
 
 export interface State {  // 用来总括所有的state
-    quote: fromQuote.State
+    quote: fromQuote.State;
+    auth: Auth;
 };
 
 const initialState: State = {
-    quote: fromQuote.initialState
+    quote: fromQuote.initialState,
+    auth: fromAuth.initialState
 };
 
 const reducers = {   // reducer字典
-    quote: fromQuote.reducer
+    quote: fromQuote.reducer,
+    auth: fromAuth.reducer
 }
 
 const productionReducers: ActionReducer<State> = combineReducers(reducers);
@@ -34,6 +39,8 @@ export function reducerAll(state = initialState, action: any): State {   // 全�
 }
 
 export const getQuoteState = (state: State) => state.quote;
+export const getAuthState = (state: State) => state.auth;
+
 export const getQuote = createSelector(getQuoteState, fromQuote.getQuote);
 
 @NgModule({

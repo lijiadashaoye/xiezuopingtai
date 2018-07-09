@@ -20,7 +20,7 @@ import {
 } from './auth.mode'
 @Injectable()
 export class AuthService {
-  private readonly domain = 'user';
+  private readonly domain = 'users';
   private token = "123456789"
   private headers = new Headers({
     'Content-type': 'application/json'
