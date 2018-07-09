@@ -41,6 +41,7 @@ export const getQuote = createSelector(getQuoteState, fromQuote.getQuote);
         StoreModule.provideStore(reducerAll),
         RouterStoreModule.connectRouter(),
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
+
     ],
 })
 export class AppStoreModule { }
