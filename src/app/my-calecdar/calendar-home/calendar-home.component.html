@@ -1,0 +1,33 @@
+<md-card>
+  <div class="toolbar">
+    <button md-icon-button mwlCalendarPreviousView>
+      <md-icon class="md-48">chevron_left</md-icon>
+    </button>
+
+    <button md-icon-button mwlCalendarToday>
+      {{viewDate|date:'yyyy-MM-dd'}}
+    </button>
+
+    <button md-icon-button mwlCalendarPreviousView>
+      <md-icon class="md-48">chevron_right</md-icon>
+    </button>
+  </div>
+  <div [ngSwitch]="">
+    <mwl-calendar-month-view *ngSwitchDefault>
+
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view *ngSwitchCase="'week'"
+    [locale]="'zh'"
+    [events]="calEvents"
+    (eventClicked)="handleEvent($event.event)"
+    [viewDate]="viewDate">
+
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view *ngSwitchCase="'day'"
+    [locale]="'zh'"
+    [events]="calEvents"
+    (eventClicked)="handleEvent($event.event)"
+    [viewDate]="viewDate">
+    </mwl-calendar-day-view>
+  </div>
+</md-card>

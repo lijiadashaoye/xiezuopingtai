@@ -70,4 +70,9 @@ export class TaskService {
             .reduce((x, y) => [...x, y], [])
     }
 
+    getUserTasks(userId: String) {
+        let url = `${this.baseUrl.baseUrl}/${this.domain}`;
+        return this.http.get(url, { params: { ownerId: userId } })
+            .map(res => res.json() as Task[])
+    }
 }
