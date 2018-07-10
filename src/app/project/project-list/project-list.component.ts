@@ -86,6 +86,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
         if (this.doWhat == 'new') {
           this.service$.add(result.reData).subscribe(res => {
             this.projects.push(res)
+            this.chan.markForCheck()
           })
         }
         if (this.doWhat == 'edit') {
@@ -95,9 +96,10 @@ export class ProjectListComponent implements OnInit, OnDestroy {
             this.projects[index] = { ...this.projects[index],
               ...res
             }
+            this.chan.markForCheck()
           })
         }
-        this.chan.markForCheck()
+        // this.chan.markForCheck()
       })
   }
   toInvite() {

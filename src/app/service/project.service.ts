@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 export class ProjectService {
     private readonly domain = 'projects';
     private headers = new Headers({
-        'Content-type': 'application/json'
+        'Content-type': 'application/json',
+        token: '11111111111'
     })
     constructor(
         private http: Http,
@@ -31,7 +32,7 @@ export class ProjectService {
     }
 
     delete(project: Project): Observable<Project> {
-        let delTasks$ = Observable.from(project.taskLists?project.taskLists:[])
+        let delTasks$ = Observable.from(project.taskLists ? project.taskLists : [])
             .mergeMap(listId => this.http.delete(`${this.baseUrl.baseUrl}/taskLists/${listId}`))
             .count();
         return delTasks$.switchMap(_ => this.http.delete(`${this.baseUrl.baseUrl}/${this.domain}/${project.id}`))

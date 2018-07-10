@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 export class TaskService {
     private readonly domain = 'tasks';
     private headers = new Headers({
-        'Content-type': 'application/json'
+        'Content-type': 'application/json',
     })
     constructor(
         private http: Http,
