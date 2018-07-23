@@ -41,7 +41,13 @@ export class ProjectService {
 
     get(userId: String) {
         let url = `${this.baseUrl.baseUrl}/${this.domain}`;
-        return this.http.get(url, { params: { 'members_like': userId } })
-            .map(res => res.json() as Project[])
+        if (userId) {
+            return this.http.get(url, { params: { 'members_like': userId } })
+                .map(res => res.json() as Project[])
+        } else {
+            return this.http.get(url)
+                .map(res => res.json() as Project[])
+        }
+
     }
 }
