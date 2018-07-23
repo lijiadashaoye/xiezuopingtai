@@ -66,7 +66,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private rd: Renderer2,
     private store$: Store<fromRoot.State>
   ) { }
-
+  fasdf(){
+    console.log(this.form.value)
+  }
   ngOnInit() {
     this.route.queryParams.subscribe(val => {
       this.type = val.type;
